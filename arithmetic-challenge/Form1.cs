@@ -117,6 +117,7 @@ namespace arithmetic_challenge
             String question = firstNumber + " " + mathOperator + " " + secondNumber + " = ";
 
             MessageBox.Show(question);
+            
             // validate fields
             if (firstNumber.Length > 0 && secondNumber.Length > 0)
             {
