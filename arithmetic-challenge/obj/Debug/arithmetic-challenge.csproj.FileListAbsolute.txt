@@ -1,0 +1,10 @@
+C:\dev\arithmetic-challenge\arithmetic-challenge\bin\Debug\arithmetic-challenge.exe.config
+C:\dev\arithmetic-challenge\arithmetic-challenge\bin\Debug\arithmetic-challenge.exe
+C:\dev\arithmetic-challenge\arithmetic-challenge\bin\Debug\arithmetic-challenge.pdb
+C:\dev\arithmetic-challenge\arithmetic-challenge\obj\Debug\arithmetic-challenge.csprojAssemblyReference.cache
+C:\dev\arithmetic-challenge\arithmetic-challenge\obj\Debug\arithmetic_challenge.Properties.Resources.resources
+C:\dev\arithmetic-challenge\arithmetic-challenge\obj\Debug\arithmetic-challenge.csproj.GenerateResource.cache
+C:\dev\arithmetic-challenge\arithmetic-challenge\obj\Debug\arithmetic-challenge.csproj.CoreCompileInputs.cache
+C:\dev\arithmetic-challenge\arithmetic-challenge\obj\Debug\arithmetic-challenge.exe
+C:\dev\arithmetic-challenge\arithmetic-challenge\obj\Debug\arithmetic-challenge.pdb
+C:\dev\arithmetic-challenge\arithmetic-challenge\obj\Debug\arithmetic_challenge.ServerForm.resources

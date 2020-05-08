@@ -1,0 +1,10 @@
+C:\dev\arithmetic-challenge\StudentForm\bin\Debug\StudentForm.exe.config
+C:\dev\arithmetic-challenge\StudentForm\bin\Debug\StudentForm.exe
+C:\dev\arithmetic-challenge\StudentForm\bin\Debug\StudentForm.pdb
+C:\dev\arithmetic-challenge\StudentForm\obj\Debug\StudentForm.csprojAssemblyReference.cache
+C:\dev\arithmetic-challenge\StudentForm\obj\Debug\StudentForm.StudentForm.resources
+C:\dev\arithmetic-challenge\StudentForm\obj\Debug\StudentForm.Properties.Resources.resources
+C:\dev\arithmetic-challenge\StudentForm\obj\Debug\StudentForm.csproj.GenerateResource.cache
+C:\dev\arithmetic-challenge\StudentForm\obj\Debug\StudentForm.csproj.CoreCompileInputs.cache
+C:\dev\arithmetic-challenge\StudentForm\obj\Debug\StudentForm.exe
+C:\dev\arithmetic-challenge\StudentForm\obj\Debug\StudentForm.pdb
