@@ -40,6 +40,7 @@
             this.tbxQuestionsAsked = new System.Windows.Forms.TextBox();
             this.btnSend = new System.Windows.Forms.Button();
             this.cbxOperator = new System.Windows.Forms.ComboBox();
+            this.lblLog = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblFirstNumber
@@ -149,11 +150,21 @@
             this.cbxOperator.TabIndex = 12;
             this.cbxOperator.Text = "+";
             // 
+            // lblLog
+            // 
+            this.lblLog.AutoSize = true;
+            this.lblLog.Location = new System.Drawing.Point(310, 244);
+            this.lblLog.Name = "lblLog";
+            this.lblLog.Size = new System.Drawing.Size(85, 13);
+            this.lblLog.TabIndex = 13;
+            this.lblLog.Text = "Log of questions";
+            // 
             // ServerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 361);
+            this.Controls.Add(this.lblLog);
             this.Controls.Add(this.cbxOperator);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.tbxQuestionsAsked);
@@ -188,6 +199,7 @@
         private System.Windows.Forms.TextBox tbxQuestionsAsked;
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.ComboBox cbxOperator;
+        private System.Windows.Forms.Label lblLog;
     }
 }
 
