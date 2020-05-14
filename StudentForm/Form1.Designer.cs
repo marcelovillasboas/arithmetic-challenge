@@ -34,6 +34,8 @@
             this.tbxQuestion = new System.Windows.Forms.TextBox();
             this.tbxAnswer = new System.Windows.Forms.TextBox();
             this.btnSubmit = new System.Windows.Forms.Button();
+            this.lblConnectionLog = new System.Windows.Forms.Label();
+            this.lblConnectionStatus = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblSubtitle
@@ -86,11 +88,32 @@
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
             // 
+            // lblConnectionLog
+            // 
+            this.lblConnectionLog.AutoSize = true;
+            this.lblConnectionLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConnectionLog.Location = new System.Drawing.Point(12, 238);
+            this.lblConnectionLog.Name = "lblConnectionLog";
+            this.lblConnectionLog.Size = new System.Drawing.Size(96, 13);
+            this.lblConnectionLog.TabIndex = 6;
+            this.lblConnectionLog.Text = "Connection log:";
+            // 
+            // lblConnectionStatus
+            // 
+            this.lblConnectionStatus.AutoSize = true;
+            this.lblConnectionStatus.Location = new System.Drawing.Point(22, 264);
+            this.lblConnectionStatus.Name = "lblConnectionStatus";
+            this.lblConnectionStatus.Size = new System.Drawing.Size(52, 13);
+            this.lblConnectionStatus.TabIndex = 7;
+            this.lblConnectionStatus.Text = "Waiting...";
+            // 
             // StudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 311);
+            this.Controls.Add(this.lblConnectionStatus);
+            this.Controls.Add(this.lblConnectionLog);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.tbxAnswer);
             this.Controls.Add(this.tbxQuestion);
@@ -112,6 +135,8 @@
         private System.Windows.Forms.TextBox tbxQuestion;
         private System.Windows.Forms.TextBox tbxAnswer;
         private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.Label lblConnectionLog;
+        private System.Windows.Forms.Label lblConnectionStatus;
     }
 }
 

@@ -40,7 +40,12 @@ namespace arithmetic_challenge
         public ServerForm()
         {
             InitializeComponent();
+            
+            // display message
             tbxQuestionsAsked.Text = "All questions to be displayed here";
+            
+            // run server
+            StartServer();
         }
 
         private void StartServer()
@@ -115,8 +120,6 @@ namespace arithmetic_challenge
             String secondNumber = tbxSecondNumber.Text;
             String mathOperator = cbxOperator.SelectedItem.ToString();
             String question = firstNumber + " " + mathOperator + " " + secondNumber + " = ";
-
-            MessageBox.Show(question);
             
             // validate fields
             if (firstNumber.Length > 0 && secondNumber.Length > 0)
