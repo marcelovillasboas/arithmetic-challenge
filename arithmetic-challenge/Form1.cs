@@ -116,48 +116,55 @@ namespace arithmetic_challenge
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            String firstNumber = tbxFirstNumber.Text;
-            String secondNumber = tbxSecondNumber.Text;
+            // gets first number and converts it into integer
+            String firstNo = tbxFirstNumber.Text;
+            int firstNumber = Int32.Parse(firstNo);
+
+            // gets second number and converts it into integer
+            String secondNo = tbxSecondNumber.Text;
+            int secondNumber = Int32.Parse(secondNo);
+
             String mathOperator = cbxOperator.SelectedItem.ToString();
-            String question = firstNumber + " " + mathOperator + " " + secondNumber + " = ";
-            
+            String strQuestion = firstNumber + " " + mathOperator + " " + secondNumber + " = ";
+
+            // declares new Question object
+            Question question = new Question(firstNumber, mathOperator, secondNumber, 0);
+
             // validate fields
-            if (firstNumber.Length > 0 && secondNumber.Length > 0)
+            if (firstNumber != null && secondNumber != null)
             {
                 // construct byte array to stream in write mode
-                byte[] bytesQuestion = Encoding.ASCII.GetBytes(question);
+                byte[] bytesQuestion = Encoding.ASCII.GetBytes(question.QuestionToSend());
                 netStream.Write(bytesQuestion, 0, bytesQuestion.Length);
                 
                 // Environment.NewLine;
-                tbxQuestionsAsked.Text += "Question: " + question + Environment.NewLine;
+                tbxQuestionsAsked.Text += "Question: " + strQuestion + Environment.NewLine;
 
                 // clear text boxes
                 tbxFirstNumber.Text = "";
                 tbxSecondNumber.Text = "";
 
-                int firstInt = Int32.Parse(firstNumber);
-                int secondInt = Int32.Parse(secondNumber);
                 int result;
 
                 if (mathOperator == "+")
                 {
-                   result = firstInt + secondInt;
+                   result = firstNumber + secondNumber;
                 }
                 else if(mathOperator == "-")
                 {
-                    result = firstInt - secondInt;
+                    result = firstNumber - secondNumber;
                 }
                 else if (mathOperator == "x")
                 {
-                    result = firstInt * secondInt;
+                    result = firstNumber * secondNumber;
                 }
                 else if (mathOperator == "/")
                 {
-                    result = firstInt / secondInt;
+                    result = firstNumber / secondNumber;
                 }
                 else
                 {
-                    result = firstInt + secondInt;
+                    result = firstNumber + secondNumber;
                 }
 
                 tbxAnswer.Text = result.ToString();
