@@ -41,6 +41,10 @@
             this.btnSend = new System.Windows.Forms.Button();
             this.cbxOperator = new System.Windows.Forms.ComboBox();
             this.lblLog = new System.Windows.Forms.Label();
+            this.tbxSortedQuestions = new System.Windows.Forms.TextBox();
+            this.btnQuickSort = new System.Windows.Forms.Button();
+            this.btnInsertionSort = new System.Windows.Forms.Button();
+            this.btnBubbleSort = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblFirstNumber
@@ -105,9 +109,9 @@
             this.lblQuestionsAsked.AutoSize = true;
             this.lblQuestionsAsked.Location = new System.Drawing.Point(310, 26);
             this.lblQuestionsAsked.Name = "lblQuestionsAsked";
-            this.lblQuestionsAsked.Size = new System.Drawing.Size(126, 13);
+            this.lblQuestionsAsked.Size = new System.Drawing.Size(89, 13);
             this.lblQuestionsAsked.TabIndex = 8;
-            this.lblQuestionsAsked.Text = "Array of questions asked:";
+            this.lblQuestionsAsked.Text = "Sorted questions:";
             // 
             // lblWrongAnswers
             // 
@@ -120,10 +124,10 @@
             // 
             // tbxQuestionsAsked
             // 
-            this.tbxQuestionsAsked.Location = new System.Drawing.Point(313, 52);
+            this.tbxQuestionsAsked.Location = new System.Drawing.Point(313, 276);
             this.tbxQuestionsAsked.Multiline = true;
             this.tbxQuestionsAsked.Name = "tbxQuestionsAsked";
-            this.tbxQuestionsAsked.Size = new System.Drawing.Size(238, 113);
+            this.tbxQuestionsAsked.Size = new System.Drawing.Size(238, 73);
             this.tbxQuestionsAsked.TabIndex = 10;
             // 
             // btnSend
@@ -159,11 +163,50 @@
             this.lblLog.TabIndex = 13;
             this.lblLog.Text = "Log of questions";
             // 
+            // tbxSortedQuestions
+            // 
+            this.tbxSortedQuestions.Location = new System.Drawing.Point(313, 50);
+            this.tbxSortedQuestions.Multiline = true;
+            this.tbxSortedQuestions.Name = "tbxSortedQuestions";
+            this.tbxSortedQuestions.Size = new System.Drawing.Size(238, 105);
+            this.tbxSortedQuestions.TabIndex = 14;
+            // 
+            // btnQuickSort
+            // 
+            this.btnQuickSort.Location = new System.Drawing.Point(313, 161);
+            this.btnQuickSort.Name = "btnQuickSort";
+            this.btnQuickSort.Size = new System.Drawing.Size(75, 23);
+            this.btnQuickSort.TabIndex = 15;
+            this.btnQuickSort.Text = "Quick Sort";
+            this.btnQuickSort.UseVisualStyleBackColor = true;
+            // 
+            // btnInsertionSort
+            // 
+            this.btnInsertionSort.Location = new System.Drawing.Point(394, 161);
+            this.btnInsertionSort.Name = "btnInsertionSort";
+            this.btnInsertionSort.Size = new System.Drawing.Size(75, 23);
+            this.btnInsertionSort.TabIndex = 16;
+            this.btnInsertionSort.Text = "Insertion Sort";
+            this.btnInsertionSort.UseVisualStyleBackColor = true;
+            // 
+            // btnBubbleSort
+            // 
+            this.btnBubbleSort.Location = new System.Drawing.Point(476, 161);
+            this.btnBubbleSort.Name = "btnBubbleSort";
+            this.btnBubbleSort.Size = new System.Drawing.Size(75, 23);
+            this.btnBubbleSort.TabIndex = 17;
+            this.btnBubbleSort.Text = "Bubble Sort";
+            this.btnBubbleSort.UseVisualStyleBackColor = true;
+            // 
             // ServerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 361);
+            this.Controls.Add(this.btnBubbleSort);
+            this.Controls.Add(this.btnInsertionSort);
+            this.Controls.Add(this.btnQuickSort);
+            this.Controls.Add(this.tbxSortedQuestions);
             this.Controls.Add(this.lblLog);
             this.Controls.Add(this.cbxOperator);
             this.Controls.Add(this.btnSend);
@@ -200,6 +243,10 @@
         private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.ComboBox cbxOperator;
         private System.Windows.Forms.Label lblLog;
+        private System.Windows.Forms.TextBox tbxSortedQuestions;
+        private System.Windows.Forms.Button btnQuickSort;
+        private System.Windows.Forms.Button btnInsertionSort;
+        private System.Windows.Forms.Button btnBubbleSort;
     }
 }
 

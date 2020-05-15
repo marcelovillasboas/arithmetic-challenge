@@ -110,7 +110,7 @@ namespace arithmetic_challenge
             }
             else
             {
-                this.tbxQuestionsAsked.Text += "Client: " + text + Environment.NewLine;
+                this.tbxQuestionsAsked.Text += "Student: " + text + Environment.NewLine;
             }
         }
 

@@ -102,7 +102,19 @@ namespace StudentForm
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            string answer = tbxAnswer.Text;
+            // send answer typed in the textbox
+            if(tbxAnswer.Text.Length > 0)
+            {
+                // construct byte array to stream in write mode
+                String answer = tbxAnswer.Text;
+                byte[] bytesToSend = Encoding.ASCII.GetBytes(answer);
+                netStream.Write(bytesToSend, 0, bytesToSend.Length);
+
+                tbxAnswer.Text = "";
+                tbxQuestion.Text = "";
+            }
+
+            lblConnectionStatus.Text = "Answer sent!" + Environment.NewLine;
         }
     }
 }
