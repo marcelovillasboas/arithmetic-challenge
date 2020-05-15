@@ -99,5 +99,10 @@ namespace StudentForm
                 this.tbxQuestion.Text += text;
             }
         }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            string answer = tbxAnswer.Text;
+        }
     }
 }
