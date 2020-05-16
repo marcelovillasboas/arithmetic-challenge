@@ -180,6 +180,7 @@
             this.btnQuickSort.TabIndex = 15;
             this.btnQuickSort.Text = "Quick Sort";
             this.btnQuickSort.UseVisualStyleBackColor = true;
+            this.btnQuickSort.Click += new System.EventHandler(this.btnQuickSort_Click);
             // 
             // btnInsertionSort
             // 

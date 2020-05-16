@@ -52,6 +52,54 @@ namespace arithmetic_challenge
             StartServer();
         }
 
+        static void QuickSort(List<Question> questions, int left, int right)
+        {
+            if (left < right)
+            {
+                int part = Partition(questions, left, right);
+                QuickSort(questions, left, part - 1);
+                QuickSort(questions, part + 1, right);
+            }
+        }
+
+        static int Partition(List<Question> questions, int left, int right)
+        {
+            int pivot = questions[left].Answer;
+
+            int x = left;
+
+            for (int i = left; i < right; i++)
+            {
+                // if right is greater than left 
+                if (pivot > questions[right].Answer)
+                {
+                    // swap
+                    Swap(questions[x], questions[i]);
+
+                    // move left pointer to next position
+                    x++;
+                }
+            }
+
+            // swap left with right
+            Swap(questions[x], questions[right]);
+            return x;
+
+        }
+
+        static void Swap(Question a, Question b)
+        {
+            Question temp = new Question(a.LeftOp, a.MathOp, a.RightOp, a.Answer);
+            a.LeftOp = b.LeftOp;
+            a.MathOp = b.MathOp;
+            a.RightOp = b.RightOp;
+            a.Answer = b.Answer;
+            b.LeftOp = temp.LeftOp;
+            b.MathOp = temp.MathOp;
+            b.RightOp = temp.RightOp;
+            b.Answer = temp.Answer;
+        }
+
         private void StartServer()
         {
             try
@@ -177,7 +225,7 @@ namespace arithmetic_challenge
                 // declares new Question object
                 Question question = new Question(firstNumber, mathOperator, secondNumber, answer);
 
-                // add to questions list
+                // adds to questions list
                 questions.Add(question);
 
                 // construct byte array to stream in write mode
@@ -216,6 +264,19 @@ namespace arithmetic_challenge
 
             // close the application
             Environment.Exit(0);
+        }
+
+        private void btnQuickSort_Click(object sender, EventArgs e)
+        {
+            tbxSortedQuestions.Clear();
+
+            QuickSort(questions, 0, questions.Count - 1);
+
+            foreach(Question question in questions)
+            {
+                tbxSortedQuestions.Text += question.ToString() + Environment.NewLine;
+            }
+            
         }
     }
 }

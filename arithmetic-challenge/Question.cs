@@ -36,5 +36,29 @@ namespace arithmetic_challenge
         {
             return this.answer.CompareTo(other.answer);
         }
+
+        public int Answer
+        {
+            get { return this.answer; }
+            set { this.answer = value; }
+        }
+
+        public int LeftOp
+        {
+            get { return this.leftOp; }
+            set { this.leftOp = value; }
+        }
+
+        public int RightOp
+        {
+            get { return this.rightOp; }
+            set { this.rightOp = value; }
+        }
+
+        public string MathOp
+        {
+            get { return this.mathOp; }
+            set { this.mathOp = value; }
+        }
     }
 }
