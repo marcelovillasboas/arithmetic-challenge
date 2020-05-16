@@ -15,9 +15,13 @@ namespace arithmetic_challenge
 {
     public partial class ServerForm : Form
     {
+        int counter = 0;
         public bool exitStatus = false;
         public const int BYTE_SYZE = 1024;
         public const int PORT_NUMBER = 8888;
+
+        // new questions list
+        List<Question> questions = new List<Question>();
 
         // listens for and accepts incoming connection requests
         private TcpListener serverListener;
@@ -110,7 +114,21 @@ namespace arithmetic_challenge
             }
             else
             {
-                this.tbxQuestionsAsked.Text += "Student: " + text + Environment.NewLine;
+                // if text received is equal the answer displayed at the answer textbox
+                if(text == tbxAnswer.Text)
+                {
+                    // display message with student's submition at the answer log
+                    this.tbxQuestionsAsked.Text += "Student: " + text + Environment.NewLine;
+                }
+                
+                // if text received is different than the answer displayed at the answer textbox
+                else
+                {
+                    this.tbxIncorrect.Text += questions[counter - 1] + Environment.NewLine;
+                    // display message with student's submition at the incorrect answer log
+                    // this.tbxIncorrect.Text += this.questions.ToString();
+                    this.tbxIncorrect.Text += "Student: " + text + Environment.NewLine;
+                }
             }
         }
 
@@ -127,23 +145,9 @@ namespace arithmetic_challenge
             String mathOperator = cbxOperator.SelectedItem.ToString();
             String strQuestion = firstNumber + " " + mathOperator + " " + secondNumber + " = ";
 
-            // declares new Question object
-            Question question = new Question(firstNumber, mathOperator, secondNumber, 0);
-
             // validate fields
             if (firstNumber != null && secondNumber != null)
             {
-                // construct byte array to stream in write mode
-                byte[] bytesQuestion = Encoding.ASCII.GetBytes(question.QuestionToSend());
-                netStream.Write(bytesQuestion, 0, bytesQuestion.Length);
-                
-                // Environment.NewLine;
-                tbxQuestionsAsked.Text += "Question: " + strQuestion + Environment.NewLine;
-
-                // clear text boxes
-                tbxFirstNumber.Text = "";
-                tbxSecondNumber.Text = "";
-
                 int result;
 
                 if (mathOperator == "+")
@@ -168,8 +172,29 @@ namespace arithmetic_challenge
                 }
 
                 tbxAnswer.Text = result.ToString();
+                int answer = Int32.Parse(result.ToString());
+
+                // declares new Question object
+                Question question = new Question(firstNumber, mathOperator, secondNumber, answer);
+
+                // add to questions list
+                questions.Add(question);
+
+                // construct byte array to stream in write mode
+                byte[] bytesQuestion = Encoding.ASCII.GetBytes(question.QuestionToSend());
+                netStream.Write(bytesQuestion, 0, bytesQuestion.Length);
+
+                // Environment.NewLine;
+                tbxQuestionsAsked.Text += "Question: " + strQuestion + Environment.NewLine;
+
+                // clear text boxes
+                tbxFirstNumber.Text = "";
+                tbxSecondNumber.Text = "";
 
             }
+
+            counter++;
+
         }
 
         private void ServerForm_FormClosed(object sender, FormClosedEventArgs e)
