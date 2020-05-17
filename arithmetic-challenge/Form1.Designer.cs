@@ -43,8 +43,6 @@
             this.lblLog = new System.Windows.Forms.Label();
             this.tbxSortedQuestions = new System.Windows.Forms.TextBox();
             this.btnQuickSort = new System.Windows.Forms.Button();
-            this.btnInsertionSort = new System.Windows.Forms.Button();
-            this.btnBubbleSort = new System.Windows.Forms.Button();
             this.tbxIncorrect = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
@@ -182,24 +180,6 @@
             this.btnQuickSort.UseVisualStyleBackColor = true;
             this.btnQuickSort.Click += new System.EventHandler(this.btnQuickSort_Click);
             // 
-            // btnInsertionSort
-            // 
-            this.btnInsertionSort.Location = new System.Drawing.Point(394, 161);
-            this.btnInsertionSort.Name = "btnInsertionSort";
-            this.btnInsertionSort.Size = new System.Drawing.Size(75, 23);
-            this.btnInsertionSort.TabIndex = 16;
-            this.btnInsertionSort.Text = "Insertion Sort";
-            this.btnInsertionSort.UseVisualStyleBackColor = true;
-            // 
-            // btnBubbleSort
-            // 
-            this.btnBubbleSort.Location = new System.Drawing.Point(476, 161);
-            this.btnBubbleSort.Name = "btnBubbleSort";
-            this.btnBubbleSort.Size = new System.Drawing.Size(75, 23);
-            this.btnBubbleSort.TabIndex = 17;
-            this.btnBubbleSort.Text = "Bubble Sort";
-            this.btnBubbleSort.UseVisualStyleBackColor = true;
-            // 
             // tbxIncorrect
             // 
             this.tbxIncorrect.Location = new System.Drawing.Point(15, 276);
@@ -214,8 +194,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 361);
             this.Controls.Add(this.tbxIncorrect);
-            this.Controls.Add(this.btnBubbleSort);
-            this.Controls.Add(this.btnInsertionSort);
             this.Controls.Add(this.btnQuickSort);
             this.Controls.Add(this.tbxSortedQuestions);
             this.Controls.Add(this.lblLog);
@@ -256,8 +234,6 @@
         private System.Windows.Forms.Label lblLog;
         private System.Windows.Forms.TextBox tbxSortedQuestions;
         private System.Windows.Forms.Button btnQuickSort;
-        private System.Windows.Forms.Button btnInsertionSort;
-        private System.Windows.Forms.Button btnBubbleSort;
         private System.Windows.Forms.TextBox tbxIncorrect;
     }
 }
