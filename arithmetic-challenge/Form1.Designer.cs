@@ -208,6 +208,7 @@
             this.btnInsertionSort.TabIndex = 20;
             this.btnInsertionSort.Text = "Insertion Sort";
             this.btnInsertionSort.UseVisualStyleBackColor = true;
+            this.btnInsertionSort.Click += new System.EventHandler(this.btnInsertionSort_Click);
             // 
             // ServerForm
             // 

@@ -133,6 +133,25 @@ namespace arithmetic_challenge
             } while (!sorted && bubble > 0);
         }
 
+        static void InsertionSort(List<Question> questions)
+        {
+            int n = questions.Count;
+
+            for(int i = 0; i < n; i++)
+            {
+                int key = questions[i].Answer;
+                int j = i - 1;
+
+                // move elements that are greater than key to one position ahead of their current position
+                while (j >= 0 && questions[j].Answer > key)
+                {
+                    questions[j + 1] = questions[j];
+                    j--;
+                }
+                questions[j + 1].Answer = key;
+            }
+        }
+
         private void StartServer()
         {
             try
@@ -317,6 +336,18 @@ namespace arithmetic_challenge
             tbxSortedQuestions.Clear();
 
             BubbleSort(0, questions);
+
+            foreach(Question question in questions)
+            {
+                tbxSortedQuestions.Text += question.ToString() + Environment.NewLine;
+            }
+        }
+
+        private void btnInsertionSort_Click(object sender, EventArgs e)
+        {
+            tbxSortedQuestions.Clear();
+
+            InsertionSort(questions);
 
             foreach(Question question in questions)
             {
