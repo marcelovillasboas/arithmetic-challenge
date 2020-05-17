@@ -25,6 +25,9 @@ namespace arithmetic_challenge
 
         // new linkedList
         DoublyLinkedList linkedList = new DoublyLinkedList();
+        
+        // counter to keep track of the list size
+        int listSize;
 
         // listens for and accepts incoming connection requests
         private TcpListener serverListener;
@@ -55,6 +58,18 @@ namespace arithmetic_challenge
             StartServer();
         }
 
+        /// <summary>
+        /// method representing the quick sort algorithm, along Partition and Swap
+        /// </summary>
+        /// <param name="questions">
+        /// list of questions sent to students using the instructor form
+        /// </param>
+        /// <param name="left">
+        /// parameter used to establish the beginning of the traverse through the list
+        /// </param>
+        /// <param name="right">
+        /// parameter used to establish the finish of the traverse through the list
+        /// </param>
         static void QuickSort(List<Question> questions, int left, int right)
         {
             if (left < right)
@@ -103,6 +118,15 @@ namespace arithmetic_challenge
             b.Answer = temp.Answer;
         }
 
+        /// <summary>
+        /// method used to build the bubble sort algorithm 
+        /// </summary>
+        /// <param name="bubble">
+        /// parametre used to implement the bubble sort algorithm
+        /// </param>
+        /// <param name="questions">
+        /// list of questions sent to the student using the instructor form. This is the object to be sorted
+        /// </param>
         static void BubbleSort(int bubble, List<Question> questions)
         {
             bool sorted;
@@ -136,6 +160,12 @@ namespace arithmetic_challenge
             } while (!sorted && bubble > 0);
         }
 
+        /// <summary>
+        /// method used to build the insertion sort algorithm
+        /// </summary>
+        /// <param name="questions">
+        /// list of questions sent to the student through the instructor form. This is the object to be sorted
+        /// </param>
         static void InsertionSort(List<Question> questions)
         {
             int n = questions.Count;
@@ -155,6 +185,10 @@ namespace arithmetic_challenge
             }
         }
 
+
+        /// <summary>
+        /// Initiates the server to establish connection with the client
+        /// </summary>
         private void StartServer()
         {
             try
@@ -183,6 +217,9 @@ namespace arithmetic_challenge
             }
         }
 
+        /// <summary>
+        /// Obeserves connection to receive data whenever it is sent
+        /// </summary>
         public void ReceiveStream()
         {
             byte[] bytesReceived = new byte[BYTE_SYZE];
@@ -204,6 +241,12 @@ namespace arithmetic_challenge
 
         }
 
+        /// <summary>
+        /// This method transforms the data received from the student form in text
+        /// </summary>
+        /// <param name="text">
+        /// The string text receives the data from the student form
+        /// </param>
         public void SetText(string text)
         {
             // InvokeRequired compares the thread ID of the
@@ -232,7 +275,7 @@ namespace arithmetic_challenge
                     // this.tbxIncorrect.Text += this.questions.ToString();
                     this.tbxIncorrect.Text += "Student: " + text + Environment.NewLine;
                     linkedList.insertToList(text);
-                    MessageBox.Show("Successfully inserted to doubly linked list.");
+                    listSize++;
                 }
             }
         }
@@ -359,6 +402,18 @@ namespace arithmetic_challenge
             foreach(Question question in questions)
             {
                 tbxSortedQuestions.Text += question.ToString() + Environment.NewLine;
+            }
+        }
+
+        // *******************************************************INCOMPLETE******************************************************
+        private void btnFindIncorrect_Click(object sender, EventArgs e)
+        {
+            string value;
+            value = tbxFindIncorrect.Text;
+
+            for(int i = 0; i < listSize; i++)
+            {
+                value.CompareTo(linkedList);
             }
         }
     }

@@ -46,6 +46,8 @@
             this.tbxIncorrect = new System.Windows.Forms.TextBox();
             this.btnBubbleSort = new System.Windows.Forms.Button();
             this.btnInsertionSort = new System.Windows.Forms.Button();
+            this.tbxFindIncorrect = new System.Windows.Forms.TextBox();
+            this.btnFindIncorrect = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblFirstNumber
@@ -210,11 +212,30 @@
             this.btnInsertionSort.UseVisualStyleBackColor = true;
             this.btnInsertionSort.Click += new System.EventHandler(this.btnInsertionSort_Click);
             // 
+            // tbxFindIncorrect
+            // 
+            this.tbxFindIncorrect.Location = new System.Drawing.Point(231, 241);
+            this.tbxFindIncorrect.Name = "tbxFindIncorrect";
+            this.tbxFindIncorrect.Size = new System.Drawing.Size(35, 20);
+            this.tbxFindIncorrect.TabIndex = 21;
+            // 
+            // btnFindIncorrect
+            // 
+            this.btnFindIncorrect.Location = new System.Drawing.Point(175, 239);
+            this.btnFindIncorrect.Name = "btnFindIncorrect";
+            this.btnFindIncorrect.Size = new System.Drawing.Size(50, 23);
+            this.btnFindIncorrect.TabIndex = 22;
+            this.btnFindIncorrect.Text = "Find";
+            this.btnFindIncorrect.UseVisualStyleBackColor = true;
+            this.btnFindIncorrect.Click += new System.EventHandler(this.btnFindIncorrect_Click);
+            // 
             // ServerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 361);
+            this.Controls.Add(this.btnFindIncorrect);
+            this.Controls.Add(this.tbxFindIncorrect);
             this.Controls.Add(this.btnInsertionSort);
             this.Controls.Add(this.btnBubbleSort);
             this.Controls.Add(this.tbxIncorrect);
@@ -261,6 +282,8 @@
         private System.Windows.Forms.TextBox tbxIncorrect;
         private System.Windows.Forms.Button btnBubbleSort;
         private System.Windows.Forms.Button btnInsertionSort;
+        private System.Windows.Forms.TextBox tbxFindIncorrect;
+        private System.Windows.Forms.Button btnFindIncorrect;
     }
 }
 
