@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace arithmetic_challenge
 {
-    class Question : IComparable<Question>
+        public class Question : IComparable<Question>
     {
         private int leftOp;
         private string mathOp;

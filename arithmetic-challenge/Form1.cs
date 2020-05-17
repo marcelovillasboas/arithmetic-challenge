@@ -23,6 +23,9 @@ namespace arithmetic_challenge
         // new questions list
         List<Question> questions = new List<Question>();
 
+        // new linkedList
+        DoublyLinkedList linkedList = new DoublyLinkedList();
+
         // listens for and accepts incoming connection requests
         private TcpListener serverListener;
 
@@ -228,6 +231,8 @@ namespace arithmetic_challenge
                     // display message with student's submition at the incorrect answer log
                     // this.tbxIncorrect.Text += this.questions.ToString();
                     this.tbxIncorrect.Text += "Student: " + text + Environment.NewLine;
+                    linkedList.insertToList(text);
+                    MessageBox.Show("Successfully inserted to doubly linked list.");
                 }
             }
         }
@@ -294,6 +299,8 @@ namespace arithmetic_challenge
             }
 
             counter++;
+
+            linkedList.readFromStart();
 
         }
 
