@@ -44,10 +44,10 @@ namespace arithmetic_challenge
         public ServerForm()
         {
             InitializeComponent();
-            
+
             // display message
             tbxQuestionsAsked.Text = "All questions to be displayed here";
-            
+
             // run server
             StartServer();
         }
@@ -98,6 +98,39 @@ namespace arithmetic_challenge
             b.MathOp = temp.MathOp;
             b.RightOp = temp.RightOp;
             b.Answer = temp.Answer;
+        }
+
+        static void BubbleSort(int bubble, List<Question> questions)
+        {
+            bool sorted;
+
+            // full list to be bubbled
+            bubble = questions.Count - 1;
+
+            do
+            {
+                int i = 0;
+
+                // assume array as sorted
+                sorted = true;
+
+                while (i < bubble)
+                {
+                    if (questions[i].Answer > questions[i + 1].Answer)
+                    {
+                        Swap(questions[i], questions[i + 1]);
+
+                        // if there is a swap to be made, array is not sorted
+                        sorted = false;
+                    }
+
+                    i++;
+
+                }
+                
+                bubble--;
+
+            } while (!sorted && bubble > 0);
         }
 
         private void StartServer()
@@ -277,6 +310,18 @@ namespace arithmetic_challenge
                 tbxSortedQuestions.Text += question.ToString() + Environment.NewLine;
             }
             
+        }
+
+        private void btnBubbleSort_Click(object sender, EventArgs e)
+        {
+            tbxSortedQuestions.Clear();
+
+            BubbleSort(0, questions);
+
+            foreach(Question question in questions)
+            {
+                tbxSortedQuestions.Text += question.ToString() + Environment.NewLine;
+            }
         }
     }
 }
