@@ -55,6 +55,19 @@ namespace arithmetic_challenge
         {
             GC.SuppressFinalize(this);
         }
+
+        /*public void traverseFront(Node node)
+        {
+            if (node == null)
+            {
+                node = this;
+            }
+            while(node != null)
+            {
+                node.Data;
+                node = node.Right;
+            }
+        }*/
     }
 
     public class Node : IDisposable
