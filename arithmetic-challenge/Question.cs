@@ -22,6 +22,11 @@ namespace arithmetic_challenge
             this.answer = answer;
         }
 
+        public string questionToSend(int leftOp, int mathOp, int rightOp, int answer)
+        {
+            return this.LeftOp + " " + this.MathOp + " " + this.RightOp + " = " + this.Answer;
+        }
+
         public override string ToString()
         {
             return answer + "(" + leftOp + mathOp + rightOp + ")";
@@ -34,6 +39,9 @@ namespace arithmetic_challenge
 
         public int CompareTo(Question other)
         {
+            // 0 means both are the same
+            // -1 means this.answer is less than other answer
+            // 1 means this.anser is greater than other answer
             return this.answer.CompareTo(other.answer);
         }
 
