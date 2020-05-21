@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace arithmetic_challenge
 {
@@ -37,6 +38,7 @@ namespace arithmetic_challenge
             }
         }
 
+        //reads list from start
         public List<string> readFromStart()
         {
             List<string> contents = new List<string>();
