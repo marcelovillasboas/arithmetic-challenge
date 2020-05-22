@@ -38,7 +38,7 @@ namespace arithmetic_challenge
             }
         }
 
-        //reads list from start
+        // reads list from start
         public List<string> readFromStart()
         {
             List<string> contents = new List<string>();
