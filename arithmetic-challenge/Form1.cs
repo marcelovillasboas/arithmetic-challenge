@@ -218,7 +218,7 @@ namespace arithmetic_challenge
         }
 
         /// <summary>
-        /// Obeserves connection to receive data whenever it is sent
+        /// Observes connection to receive data whenever any message is sent
         /// </summary>
         public void ReceiveStream()
         {
@@ -322,7 +322,7 @@ namespace arithmetic_challenge
                 tbxAnswer.Text = result.ToString();
                 int answer = Int32.Parse(result.ToString());
 
-                // declares new Question object
+                // creates new Question object
                 Question question = new Question(firstNumber, mathOperator, secondNumber, answer);
 
                 // adds to questions list
