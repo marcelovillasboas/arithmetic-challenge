@@ -187,7 +187,7 @@ namespace arithmetic_challenge
 
 
         /// <summary>
-        /// Initiates the server to establish connection with the client
+        /// Initiates the server to establish the connection with the client
         /// </summary>
         private void StartServer()
         {
