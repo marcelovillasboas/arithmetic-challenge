@@ -164,7 +164,7 @@ namespace arithmetic_challenge
         /// method used to build the insertion sort algorithm
         /// </summary>
         /// <param name="questions">
-        /// list of questions sent to the student through the instructor form. This is the object to be sorted
+        /// list of questions sent to the student through the instructor form. This is the object supposed to be sorted
         /// </param>
         static void InsertionSort(List<Question> questions)
         {
