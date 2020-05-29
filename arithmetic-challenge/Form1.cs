@@ -175,7 +175,7 @@ namespace arithmetic_challenge
                 int key = questions[i].Answer;
                 int j = i - 1;
 
-                // move elements that are greater than key to one position ahead of their current position
+                // move elements that are greater than the key to one position ahead of their current position
                 while (j >= 0 && questions[j].Answer > key)
                 {
                     questions[j + 1] = questions[j];
