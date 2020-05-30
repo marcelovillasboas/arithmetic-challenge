@@ -125,7 +125,7 @@ namespace arithmetic_challenge
         /// parametre used to implement the bubble sort algorithm
         /// </param>
         /// <param name="questions">
-        /// list of questions sent to the student using the instructor form. This is the object supposed to be sorted
+        /// list of questions sent to the student using the instructor form. This is the object to be sorted
         /// </param>
         static void BubbleSort(int bubble, List<Question> questions)
         {
