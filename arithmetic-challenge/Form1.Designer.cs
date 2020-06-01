@@ -48,6 +48,14 @@
             this.btnInsertionSort = new System.Windows.Forms.Button();
             this.tbxFindIncorrect = new System.Windows.Forms.TextBox();
             this.btnFindIncorrect = new System.Windows.Forms.Button();
+            this.lblPreOrder = new System.Windows.Forms.Label();
+            this.lblInOrder = new System.Windows.Forms.Label();
+            this.lblPostOrder = new System.Windows.Forms.Label();
+            this.btnPreOrderDisplay = new System.Windows.Forms.Button();
+            this.btnDisplayInOrder = new System.Windows.Forms.Button();
+            this.btnDisplayPostOrder = new System.Windows.Forms.Button();
+            this.btnFindAllQuestions = new System.Windows.Forms.Button();
+            this.tbxFindAllQuestions = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblFirstNumber
@@ -127,7 +135,7 @@
             // 
             // tbxQuestionsAsked
             // 
-            this.tbxQuestionsAsked.Location = new System.Drawing.Point(313, 276);
+            this.tbxQuestionsAsked.Location = new System.Drawing.Point(312, 229);
             this.tbxQuestionsAsked.Multiline = true;
             this.tbxQuestionsAsked.Name = "tbxQuestionsAsked";
             this.tbxQuestionsAsked.Size = new System.Drawing.Size(238, 73);
@@ -160,11 +168,11 @@
             // lblLog
             // 
             this.lblLog.AutoSize = true;
-            this.lblLog.Location = new System.Drawing.Point(310, 244);
+            this.lblLog.Location = new System.Drawing.Point(310, 204);
             this.lblLog.Name = "lblLog";
-            this.lblLog.Size = new System.Drawing.Size(85, 13);
+            this.lblLog.Size = new System.Drawing.Size(143, 13);
             this.lblLog.TabIndex = 13;
-            this.lblLog.Text = "Log of questions";
+            this.lblLog.Text = "Log of questions (binary tree)";
             // 
             // tbxSortedQuestions
             // 
@@ -229,11 +237,93 @@
             this.btnFindIncorrect.UseVisualStyleBackColor = true;
             this.btnFindIncorrect.Click += new System.EventHandler(this.btnFindIncorrect_Click);
             // 
+            // lblPreOrder
+            // 
+            this.lblPreOrder.AutoSize = true;
+            this.lblPreOrder.Location = new System.Drawing.Point(310, 316);
+            this.lblPreOrder.Name = "lblPreOrder";
+            this.lblPreOrder.Size = new System.Drawing.Size(49, 13);
+            this.lblPreOrder.TabIndex = 23;
+            this.lblPreOrder.Text = "PreOrder";
+            // 
+            // lblInOrder
+            // 
+            this.lblInOrder.AutoSize = true;
+            this.lblInOrder.Location = new System.Drawing.Point(411, 316);
+            this.lblInOrder.Name = "lblInOrder";
+            this.lblInOrder.Size = new System.Drawing.Size(42, 13);
+            this.lblInOrder.TabIndex = 24;
+            this.lblInOrder.Text = "InOrder";
+            // 
+            // lblPostOrder
+            // 
+            this.lblPostOrder.AutoSize = true;
+            this.lblPostOrder.Location = new System.Drawing.Point(497, 316);
+            this.lblPostOrder.Name = "lblPostOrder";
+            this.lblPostOrder.Size = new System.Drawing.Size(54, 13);
+            this.lblPostOrder.TabIndex = 25;
+            this.lblPostOrder.Text = "PostOrder";
+            // 
+            // btnPreOrderDisplay
+            // 
+            this.btnPreOrderDisplay.Location = new System.Drawing.Point(310, 332);
+            this.btnPreOrderDisplay.Name = "btnPreOrderDisplay";
+            this.btnPreOrderDisplay.Size = new System.Drawing.Size(49, 23);
+            this.btnPreOrderDisplay.TabIndex = 26;
+            this.btnPreOrderDisplay.Text = "Display";
+            this.btnPreOrderDisplay.UseVisualStyleBackColor = true;
+            this.btnPreOrderDisplay.Click += new System.EventHandler(this.btnPreOrderDisplay_Click);
+            // 
+            // btnDisplayInOrder
+            // 
+            this.btnDisplayInOrder.Location = new System.Drawing.Point(404, 332);
+            this.btnDisplayInOrder.Name = "btnDisplayInOrder";
+            this.btnDisplayInOrder.Size = new System.Drawing.Size(49, 23);
+            this.btnDisplayInOrder.TabIndex = 27;
+            this.btnDisplayInOrder.Text = "Display";
+            this.btnDisplayInOrder.UseVisualStyleBackColor = true;
+            this.btnDisplayInOrder.Click += new System.EventHandler(this.btnDisplayInOrder_Click);
+            // 
+            // btnDisplayPostOrder
+            // 
+            this.btnDisplayPostOrder.Location = new System.Drawing.Point(500, 332);
+            this.btnDisplayPostOrder.Name = "btnDisplayPostOrder";
+            this.btnDisplayPostOrder.Size = new System.Drawing.Size(49, 23);
+            this.btnDisplayPostOrder.TabIndex = 28;
+            this.btnDisplayPostOrder.Text = "Display";
+            this.btnDisplayPostOrder.UseVisualStyleBackColor = true;
+            this.btnDisplayPostOrder.Click += new System.EventHandler(this.btnDisplayPostOrder_Click);
+            // 
+            // btnFindAllQuestions
+            // 
+            this.btnFindAllQuestions.Location = new System.Drawing.Point(459, 200);
+            this.btnFindAllQuestions.Name = "btnFindAllQuestions";
+            this.btnFindAllQuestions.Size = new System.Drawing.Size(38, 23);
+            this.btnFindAllQuestions.TabIndex = 29;
+            this.btnFindAllQuestions.Text = "Find";
+            this.btnFindAllQuestions.UseVisualStyleBackColor = true;
+            this.btnFindAllQuestions.Click += new System.EventHandler(this.btnFindAllQuestions_Click);
+            // 
+            // tbxFindAllQuestions
+            // 
+            this.tbxFindAllQuestions.Location = new System.Drawing.Point(500, 202);
+            this.tbxFindAllQuestions.Name = "tbxFindAllQuestions";
+            this.tbxFindAllQuestions.Size = new System.Drawing.Size(50, 20);
+            this.tbxFindAllQuestions.TabIndex = 30;
+            // 
             // ServerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 361);
+            this.Controls.Add(this.tbxFindAllQuestions);
+            this.Controls.Add(this.btnFindAllQuestions);
+            this.Controls.Add(this.btnDisplayPostOrder);
+            this.Controls.Add(this.btnDisplayInOrder);
+            this.Controls.Add(this.btnPreOrderDisplay);
+            this.Controls.Add(this.lblPostOrder);
+            this.Controls.Add(this.lblInOrder);
+            this.Controls.Add(this.lblPreOrder);
             this.Controls.Add(this.btnFindIncorrect);
             this.Controls.Add(this.tbxFindIncorrect);
             this.Controls.Add(this.btnInsertionSort);
@@ -257,6 +347,7 @@
             this.Name = "ServerForm";
             this.Text = "Instructor";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ServerForm_FormClosed);
+            this.Load += new System.EventHandler(this.ServerForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,6 +375,14 @@
         private System.Windows.Forms.Button btnInsertionSort;
         private System.Windows.Forms.TextBox tbxFindIncorrect;
         private System.Windows.Forms.Button btnFindIncorrect;
+        private System.Windows.Forms.Label lblPreOrder;
+        private System.Windows.Forms.Label lblInOrder;
+        private System.Windows.Forms.Label lblPostOrder;
+        private System.Windows.Forms.Button btnPreOrderDisplay;
+        private System.Windows.Forms.Button btnDisplayInOrder;
+        private System.Windows.Forms.Button btnDisplayPostOrder;
+        private System.Windows.Forms.Button btnFindAllQuestions;
+        private System.Windows.Forms.TextBox tbxFindAllQuestions;
     }
 }
 

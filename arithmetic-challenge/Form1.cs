@@ -1,4 +1,18 @@
-﻿using System;
+﻿/*********************************************************************************************************
+Filename: Arithmetic Challenge - Math Quiz
+Purpose: Connect student and teacher using a software in which the instructor is able to send math questions through 
+a network to the student and check whether the responses are correct.
+Author: Marcelo Villas Boas
+Date: May/2020
+Version: 1.0
+Version 1.0 - basic functionality. Instructor is able to send math questions to the student using a client-server model 
+network. Student receives the question and answers it. After that, the instructor receives the student's answer identifying 
+whether it is correct or not. Questions can be sorted using three different sorting algorithms (insertion sort, quick sort 
+and bubble sort). The questions are also stored in a Binary Tree, giving the user the ability to traverse the tree using 
+three different methods (PreOrder, InOrder and PostOrder).
+*********************************************************************************************************/
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +35,9 @@ namespace arithmetic_challenge
         public bool exitStatus = false;
         public const int BYTE_SYZE = 1024;
         public const int PORT_NUMBER = 8888;
+
+        // declare Binary Tree
+        BinaryTree<string> btQuestions = new BinaryTree<string>();
 
         // new questions list
         List<Question> questions = new List<Question>();
@@ -71,7 +88,8 @@ namespace arithmetic_challenge
         /// </param>
         /// <param name="right">
         /// parameter used to establish the finish of the traverse through the list
-        /// </param>
+        /// </param> 
+
         static void QuickSort(List<Question> questions, int left, int right)
         {
             if (left < right)
@@ -335,11 +353,8 @@ namespace arithmetic_challenge
                 byte[] bytesQuestion = Encoding.ASCII.GetBytes(question.QuestionToSend());
                 netStream.Write(bytesQuestion, 0, bytesQuestion.Length);
 
-                // declare Binary Tree
-                BinaryTree<string> btQuestions = new BinaryTree<string>();
-
                 // insert questions into Binary Tree
-                btQuestions.Add(key, question.QuestionToSend());
+                btQuestions.Add(question.questionToSend(firstNumber, mathOperator, secondNumber, answer));
 
                 // change key
                 key++;
@@ -425,8 +440,59 @@ namespace arithmetic_challenge
 
             for(int i = 0; i < listSize; i++)
             {
-                value.CompareTo(linkedList);
+                                
             }
+        }
+        // ******************************************************INCOMPLETE********************************************************
+
+        private void btnPreOrderDisplay_Click(object sender, EventArgs e)
+        {
+            tbxQuestionsAsked.Clear();
+
+            btQuestions.PreOrder(btQuestions.GetRoot());
+            string tString = btQuestions.TraversalString;
+            tbxQuestionsAsked.Text += tString;
+            
+            
+        }
+
+        private void ServerForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFindAllQuestions_Click(object sender, EventArgs e)
+        {
+            string value = tbxFindAllQuestions.Text.ToString();
+
+            if(btQuestions.Contains(value))
+            {
+                MessageBox.Show(value + " was found within the tree.");
+            }
+            else
+            {
+                MessageBox.Show(value + " was not found.");
+            }
+        }
+
+        private void btnDisplayInOrder_Click(object sender, EventArgs e)
+        {
+            tbxQuestionsAsked.Clear();
+
+            btQuestions.InOrder(btQuestions.GetRoot());
+            string tString = btQuestions.TraversalString;
+
+            tbxQuestionsAsked.Text += tString;
+        }
+
+        private void btnDisplayPostOrder_Click(object sender, EventArgs e)
+        {
+            tbxQuestionsAsked.Clear();
+
+            btQuestions.PostOrder(btQuestions.GetRoot());
+            string tString = btQuestions.TraversalString;
+
+            tbxQuestionsAsked.Text += tString;
         }
     }
 }

@@ -12,11 +12,13 @@ namespace arithmetic_challenge
 
         private Node<T> root;
         private int count;
+        private String traversalString;
 
         public BinaryTree()
         {
             root = null;
             count = 0;
+            traversalString = "";
         }
 
         public Node<T> GetRoot()
@@ -51,7 +53,7 @@ namespace arithmetic_challenge
             }
         }
 
-        public void Add (int key, T data)
+        public void Add (T data)
         {
             Node<T> newNode = new Node<T>(data);
 
@@ -99,6 +101,13 @@ namespace arithmetic_challenge
             }
         }
 
+        public String TraversalString
+        {
+            get { return this.traversalString; }
+            set { this.traversalString = value; }
+
+        }
+
         public bool Contains (T value)
         {
             return (this.Find(value) != null);
@@ -135,10 +144,11 @@ namespace arithmetic_challenge
         {
             if (root != null)
             {
-                // root
+                TraversalString += root.data.ToString() + ", ";
                 PreOrder(root.leftChild);
                 PreOrder(root.rightChild);
             }
+            
         }
 
         public void PostOrder(Node<T> root)
@@ -147,21 +157,20 @@ namespace arithmetic_challenge
             {
                 PostOrder(root.leftChild);
                 PostOrder(root.rightChild);
-                // root
+                TraversalString += root.data.ToString() + ", ";
             }
+
         }
 
         public void InOrder(Node<T> root)
         {
             if(root != null)
             {
-                if(root.GetType().ToString().Contains("MathQues"))
-                {
-                    InOrder(root.leftChild);
-                    // root
-                    InOrder(root.rightChild);
-                }
+                InOrder(root.leftChild);
+                TraversalString += root.data.ToString() + " ";       
+                InOrder(root.rightChild);
             }
+
         }
 
         public void DisplayBreadthFirst()
@@ -201,6 +210,11 @@ namespace arithmetic_challenge
                     s.Push(n.rightChild);
                 }
             }
+        }
+
+        public string getDataString(T data)
+        {
+            return data.ToString();
         }
     }
 }

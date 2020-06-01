@@ -22,7 +22,7 @@ namespace arithmetic_challenge
             this.answer = answer;
         }
 
-        public string questionToSend(int leftOp, int mathOp, int rightOp, int answer)
+        public string questionToSend(int leftOp, string mathOp, int rightOp, int answer)
         {
             return this.LeftOp + " " + this.MathOp + " " + this.RightOp + " = " + this.Answer;
         }
