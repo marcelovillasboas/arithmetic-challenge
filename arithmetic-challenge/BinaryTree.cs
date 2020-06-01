@@ -51,7 +51,7 @@ namespace arithmetic_challenge
             }
         }
 
-        public void Add (T data)
+        public void Add (int key, T data)
         {
             Node<T> newNode = new Node<T>(data);
 

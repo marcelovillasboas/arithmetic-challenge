@@ -15,6 +15,8 @@ namespace arithmetic_challenge
 {
     public partial class ServerForm : Form
     {
+        
+        int key = 0;
         int counter = 0;
         public bool exitStatus = false;
         public const int BYTE_SYZE = 1024;
@@ -282,6 +284,7 @@ namespace arithmetic_challenge
 
         private void btnSend_Click(object sender, EventArgs e)
         {
+
             // gets first number and converts it into integer
             String firstNo = tbxFirstNumber.Text;
             int firstNumber = Int32.Parse(firstNo);
@@ -331,6 +334,15 @@ namespace arithmetic_challenge
                 // construct byte array to stream in write mode
                 byte[] bytesQuestion = Encoding.ASCII.GetBytes(question.QuestionToSend());
                 netStream.Write(bytesQuestion, 0, bytesQuestion.Length);
+
+                // declare Binary Tree
+                BinaryTree<string> btQuestions = new BinaryTree<string>();
+
+                // insert questions into Binary Tree
+                btQuestions.Add(key, question.QuestionToSend());
+
+                // change key
+                key++;
 
                 // Environment.NewLine;
                 tbxQuestionsAsked.Text += "Question: " + strQuestion + Environment.NewLine;
