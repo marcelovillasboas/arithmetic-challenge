@@ -462,8 +462,9 @@ namespace arithmetic_challenge
                         tbxIncorrect.Clear();
                         tbxIncorrect.Text += leftOp + " " + mathOp + " " + rightOp + " " + " " + answer + Environment.NewLine;
                         tbxIncorrect.Text += questionStrHashSet.ElementAt(0);
+                        string questionToCompare = answer + "(" + leftOp + mathOp + rightOp + ")";
 
-                        if(questionStrHashSet.Contains(questionToSearch)) 
+                        if (questionStrHashSet.Contains(questionToCompare)) 
                         {
                             tbxIncorrect.Text = questionToSearch + " found.";
                         }
@@ -499,15 +500,45 @@ namespace arithmetic_challenge
 
         private void btnFindAllQuestions_Click(object sender, EventArgs e)
         {
-            string value = tbxFindAllQuestions.Text.ToString();
+            string questionToSearch = tbxFindAllQuestions.Text.ToString();
 
-            if(btQuestions.Contains(value))
+            if(tbxFindAllQuestions.Text == null)
             {
-                MessageBox.Show(value + " was found within the tree.");
+                tbxQuestionsAsked.Text = "Enter a valid question to the search bar";
             }
             else
             {
-                MessageBox.Show(value + " was not found.");
+                string[] strElements = questionToSearch.Split(' ');
+
+                if (strElements.Length == 5)
+                {
+                    try
+                    {
+                        int leftOp = Int32.Parse(strElements[0]);
+                        string mathOp = strElements[1];
+                        int rightOp = Int32.Parse(strElements[2]);
+                        int answer = Int32.Parse(strElements[4]);
+
+                        tbxQuestionsAsked.Clear();
+                        tbxQuestionsAsked.Text += leftOp + " " + mathOp + " " + rightOp + " " + " " + answer + Environment.NewLine;
+                        tbxQuestionsAsked.Text += questionStrHashSet.ElementAt(0);
+                        string questionToCompare = answer + "(" + leftOp + mathOp + rightOp + ")"; 
+
+                        if (questionStrHashSet.Contains(questionToCompare))
+                        {
+                            tbxQuestionsAsked.Text = questionToSearch + " found.";
+                        }
+                        else
+                        {
+                            tbxQuestionsAsked.Text = questionToSearch + " not found.";
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        tbxQuestionsAsked.Text = "Error. Review question format";
+                    }
+                }
+
             }
         }
 
