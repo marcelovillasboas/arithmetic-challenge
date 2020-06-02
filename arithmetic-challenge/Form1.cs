@@ -305,7 +305,6 @@ namespace arithmetic_challenge
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-
             // gets first number and converts it into integer
             String firstNo = tbxFirstNumber.Text;
             int firstNumber = Int32.Parse(firstNo);
@@ -316,8 +315,13 @@ namespace arithmetic_challenge
 
             String mathOperator = cbxOperator.SelectedItem.ToString();
             String strQuestion = firstNumber + " " + mathOperator + " " + secondNumber + " = ";
-
             // validate fields
+
+            if (firstNo == null || secondNo == null)
+            {
+                MessageBox.Show("Enter values to the first and second numbers of the operation");
+            }
+
             if (firstNumber != null && secondNumber != null)
             {
                 int result;
@@ -441,8 +445,8 @@ namespace arithmetic_challenge
         private void btnFindIncorrect_Click(object sender, EventArgs e)
         {
             string questionToSearch = tbxFindIncorrect.Text;
-
-            if(questionToSearch == null)
+                        
+            if (questionToSearch == null)
             {
                 MessageBox.Show("Enter a valid question to the search bar.");
             }
@@ -458,13 +462,13 @@ namespace arithmetic_challenge
                         string mathOp = strElements[1];
                         int rightOp = Int32.Parse(strElements[2]);
                         int answer = Int32.Parse(strElements[4]);
+                        string questionToCompare = answer + "(" + leftOp + mathOp + rightOp + ")";
 
                         tbxIncorrect.Clear();
                         tbxIncorrect.Text += leftOp + " " + mathOp + " " + rightOp + " " + " " + answer + Environment.NewLine;
                         tbxIncorrect.Text += questionStrHashSet.ElementAt(0);
-                        string questionToCompare = answer + "(" + leftOp + mathOp + rightOp + ")";
 
-                        if (questionStrHashSet.Contains(questionToCompare)) 
+                        if (questionStrHashSet.Contains(questionToCompare))
                         {
                             tbxIncorrect.Text = questionToSearch + " found.";
                         }
@@ -479,12 +483,12 @@ namespace arithmetic_challenge
                     }
                 }
             }
-
         }
+            
 
         private void btnPreOrderDisplay_Click(object sender, EventArgs e)
         {
-            tbxQuestionsAsked.Clear();
+            tbxQuestionsAsked.Text = "";
 
             btQuestions.PreOrder(btQuestions.GetRoot());
             string tString = btQuestions.TraversalString;
@@ -501,8 +505,8 @@ namespace arithmetic_challenge
         private void btnFindAllQuestions_Click(object sender, EventArgs e)
         {
             string questionToSearch = tbxFindAllQuestions.Text.ToString();
-
-            if(tbxFindAllQuestions.Text == null)
+                        
+            if (tbxFindAllQuestions.Text == null)
             {
                 tbxQuestionsAsked.Text = "Enter a valid question to the search bar";
             }
@@ -518,11 +522,10 @@ namespace arithmetic_challenge
                         string mathOp = strElements[1];
                         int rightOp = Int32.Parse(strElements[2]);
                         int answer = Int32.Parse(strElements[4]);
-
                         tbxQuestionsAsked.Clear();
-                        tbxQuestionsAsked.Text += leftOp + " " + mathOp + " " + rightOp + " " + " " + answer + Environment.NewLine;
+                        tbxQuestionsAsked.Text += leftOp.ToString() + " " + mathOp + " " + rightOp.ToString() + " = " + answer.ToString() + Environment.NewLine;
                         tbxQuestionsAsked.Text += questionStrHashSet.ElementAt(0);
-                        string questionToCompare = answer + "(" + leftOp + mathOp + rightOp + ")"; 
+                        string questionToCompare = answer + "(" + leftOp + mathOp + rightOp + ")";
 
                         if (questionStrHashSet.Contains(questionToCompare))
                         {
@@ -541,10 +544,11 @@ namespace arithmetic_challenge
 
             }
         }
+            
 
         private void btnDisplayInOrder_Click(object sender, EventArgs e)
         {
-            tbxQuestionsAsked.Clear();
+            tbxQuestionsAsked.Text = "";
 
             btQuestions.InOrder(btQuestions.GetRoot());
             string tString = btQuestions.TraversalString;
@@ -554,12 +558,17 @@ namespace arithmetic_challenge
 
         private void btnDisplayPostOrder_Click(object sender, EventArgs e)
         {
-            tbxQuestionsAsked.Clear();
+            tbxQuestionsAsked.Text = "";
 
             btQuestions.PostOrder(btQuestions.GetRoot());
             string tString = btQuestions.TraversalString;
 
             tbxQuestionsAsked.Text += tString;
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

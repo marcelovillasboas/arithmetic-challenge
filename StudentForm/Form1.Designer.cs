@@ -36,6 +36,7 @@
             this.btnSubmit = new System.Windows.Forms.Button();
             this.lblConnectionLog = new System.Windows.Forms.Label();
             this.lblConnectionStatus = new System.Windows.Forms.Label();
+            this.btnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblSubtitle
@@ -108,11 +109,22 @@
             this.lblConnectionStatus.TabIndex = 7;
             this.lblConnectionStatus.Text = "Waiting...";
             // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(197, 276);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.TabIndex = 8;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // StudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 311);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.lblConnectionStatus);
             this.Controls.Add(this.lblConnectionLog);
             this.Controls.Add(this.btnSubmit);
@@ -138,6 +150,7 @@
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Label lblConnectionLog;
         private System.Windows.Forms.Label lblConnectionStatus;
+        private System.Windows.Forms.Button btnExit;
     }
 }
 

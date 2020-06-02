@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace StudentForm
 {
@@ -103,7 +104,7 @@ namespace StudentForm
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             // send answer typed in the textbox
-            if(tbxAnswer.Text.Length > 0)
+            if(tbxAnswer.Text.Length > 0 && Regex.IsMatch(tbxAnswer.Text, @"^\d+$"))
             {
                 // construct byte array to stream in write mode
                 String answer = tbxAnswer.Text;
@@ -112,9 +113,19 @@ namespace StudentForm
 
                 tbxAnswer.Text = "";
                 tbxQuestion.Text = "";
-            }
 
-            lblConnectionStatus.Text = "Answer sent!" + Environment.NewLine;
+                lblConnectionStatus.Text = "Answer sent!" + Environment.NewLine;
+            }
+            else
+            {
+                lblConnectionStatus.Text += "Data not sent. Enter a valid answer." + Environment.NewLine;
+                tbxAnswer.Text = "";
+            }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

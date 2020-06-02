@@ -56,6 +56,7 @@
             this.btnDisplayPostOrder = new System.Windows.Forms.Button();
             this.btnFindAllQuestions = new System.Windows.Forms.Button();
             this.tbxFindAllQuestions = new System.Windows.Forms.TextBox();
+            this.btnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblFirstNumber
@@ -224,8 +225,9 @@
             // 
             this.tbxFindIncorrect.Location = new System.Drawing.Point(231, 241);
             this.tbxFindIncorrect.Name = "tbxFindIncorrect";
-            this.tbxFindIncorrect.Size = new System.Drawing.Size(35, 20);
+            this.tbxFindIncorrect.Size = new System.Drawing.Size(55, 20);
             this.tbxFindIncorrect.TabIndex = 21;
+            this.tbxFindIncorrect.Text = "a + b = c";
             // 
             // btnFindIncorrect
             // 
@@ -310,12 +312,24 @@
             this.tbxFindAllQuestions.Name = "tbxFindAllQuestions";
             this.tbxFindAllQuestions.Size = new System.Drawing.Size(50, 20);
             this.tbxFindAllQuestions.TabIndex = 30;
+            this.tbxFindAllQuestions.Text = "a + b = c";
+            // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(497, 361);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.TabIndex = 31;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // ServerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 361);
+            this.ClientSize = new System.Drawing.Size(584, 394);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.tbxFindAllQuestions);
             this.Controls.Add(this.btnFindAllQuestions);
             this.Controls.Add(this.btnDisplayPostOrder);
@@ -383,6 +397,7 @@
         private System.Windows.Forms.Button btnDisplayPostOrder;
         private System.Windows.Forms.Button btnFindAllQuestions;
         private System.Windows.Forms.TextBox tbxFindAllQuestions;
+        private System.Windows.Forms.Button btnExit;
     }
 }
 
