@@ -42,6 +42,9 @@ namespace arithmetic_challenge
         // new questions list
         List<Question> questions = new List<Question>();
 
+        // declare hashset
+        HashSet<string> questionStrHashSet = new HashSet<string>();
+
         // new linkedList
         DoublyLinkedList linkedList = new DoublyLinkedList();
         
@@ -349,6 +352,9 @@ namespace arithmetic_challenge
                 // adds to questions list
                 questions.Add(question);
 
+                // add to hashset
+                questionStrHashSet.Add(question.ToString());
+
                 // construct byte array to stream in write mode
                 byte[] bytesQuestion = Encoding.ASCII.GetBytes(question.QuestionToSend());
                 netStream.Write(bytesQuestion, 0, bytesQuestion.Length);
@@ -432,18 +438,48 @@ namespace arithmetic_challenge
             }
         }
 
-        // *******************************************************INCOMPLETE******************************************************
         private void btnFindIncorrect_Click(object sender, EventArgs e)
         {
-            string value;
-            value = tbxFindIncorrect.Text;
+            string questionToSearch = tbxFindIncorrect.Text;
 
-            for(int i = 0; i < listSize; i++)
+            if(questionToSearch == null)
             {
-                                
+                MessageBox.Show("Enter a valid question to the search bar.");
             }
+            else
+            {
+                string[] strElements = questionToSearch.Split(' ');
+                
+                if (strElements.Length == 5)
+                {
+                    try
+                    {
+                        int leftOp = Int32.Parse(strElements[0]);
+                        string mathOp = strElements[1];
+                        int rightOp = Int32.Parse(strElements[2]);
+                        int answer = Int32.Parse(strElements[4]);
+
+                        tbxIncorrect.Clear();
+                        tbxIncorrect.Text += leftOp + " " + mathOp + " " + rightOp + " " + " " + answer + Environment.NewLine;
+                        tbxIncorrect.Text += questionStrHashSet.ElementAt(0);
+
+                        if(questionStrHashSet.Contains(questionToSearch)) 
+                        {
+                            tbxIncorrect.Text = questionToSearch + " found.";
+                        }
+                        else
+                        {
+                            tbxIncorrect.Text = questionToSearch + " not found.";
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        tbxIncorrect.Text = "Error. Review question format";
+                    }
+                }
+            }
+
         }
-        // ******************************************************INCOMPLETE********************************************************
 
         private void btnPreOrderDisplay_Click(object sender, EventArgs e)
         {
