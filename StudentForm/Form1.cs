@@ -115,7 +115,9 @@ namespace StudentForm
 
             try
             {
+                // convert string into int
                 studentAnswer = Int32.Parse(tbxAnswer.Text);
+
                 // send answer typed in the textbox
                 if (tbxAnswer.Text.Length > 0 && Regex.IsMatch(tbxAnswer.Text, @"^\d+$"))
                 {
