@@ -103,24 +103,104 @@ namespace StudentForm
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            // send answer typed in the textbox
-            if(tbxAnswer.Text.Length > 0 && Regex.IsMatch(tbxAnswer.Text, @"^\d+$"))
-            {
-                // construct byte array to stream in write mode
-                String answer = tbxAnswer.Text;
-                byte[] bytesToSend = Encoding.ASCII.GetBytes(answer);
-                netStream.Write(bytesToSend, 0, bytesToSend.Length);
+            string question = tbxQuestion.Text;
+            string[] questionElements = question.Split(' ');
 
-                tbxAnswer.Text = "";
-                tbxQuestion.Text = "";
+            string firstNumber = questionElements[0];
+            string secondNumber = questionElements[2];
+            string mathOp = questionElements[1];
+            int correctAnswer;
+            int studentAnswer;
+            lblConnectionStatus.Text += Environment.NewLine + firstNumber + mathOp + secondNumber;
 
-                lblConnectionStatus.Text = "Answer sent!" + Environment.NewLine;
-            }
-            else
+            try
             {
-                lblConnectionStatus.Text += "Data not sent. Enter a valid answer." + Environment.NewLine;
-                tbxAnswer.Text = "";
+                studentAnswer = Int32.Parse(tbxAnswer.Text);
+                // send answer typed in the textbox
+                if (tbxAnswer.Text.Length > 0 && Regex.IsMatch(tbxAnswer.Text, @"^\d+$"))
+                {
+                    // construct byte array to stream in write mode
+                    String answer = tbxAnswer.Text;
+                    byte[] bytesToSend = Encoding.ASCII.GetBytes(answer);
+                    netStream.Write(bytesToSend, 0, bytesToSend.Length);
+
+                    tbxAnswer.Text = "";
+                    tbxQuestion.Text = "";
+
+                    lblConnectionStatus.Text = "Answer sent!" + Environment.NewLine;
+                }
+                else
+                {
+                    MessageBox.Show("Data not sent. Enter a valid answer.");
+                    tbxAnswer.Text = "";
+                }
+
+                try
+                {
+                    int firstNo = Int32.Parse(firstNumber);
+                    int secondNo = Int32.Parse(secondNumber);
+
+                    if (mathOp == "+")
+                    {
+                        correctAnswer = firstNo + secondNo;
+                        if (studentAnswer == correctAnswer)
+                        {
+                            MessageBox.Show("Correct answer");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Incorrect answer");
+                        }
+                    }
+                    else if (mathOp == "-")
+                    {
+                        correctAnswer = firstNo - secondNo;
+                        if (studentAnswer == correctAnswer)
+                        {
+                            MessageBox.Show("Correct answer");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Incorrect answer");
+                        }
+                    }
+                    else if (mathOp == "*")
+                    {
+                        correctAnswer = firstNo * secondNo;
+                        if (studentAnswer == correctAnswer)
+                        {
+                            MessageBox.Show("Correct answer");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Incorrect answer");
+                        }
+                    }
+                    else if (mathOp == "/")
+                    {
+                        correctAnswer = firstNo / secondNo;
+                        if (studentAnswer == correctAnswer)
+                        {
+                            MessageBox.Show("Correct answer");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Incorrect answer");
+                        }
+                    }
+                                        
+                }
+                catch(Exception exc)
+                {
+                    MessageBox.Show("Error parsing question.");
+                }
+
             }
+            catch (Exception ex)
+            {
+                
+            }
+            
         }
 
         private void btnExit_Click(object sender, EventArgs e)

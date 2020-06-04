@@ -208,7 +208,6 @@ namespace arithmetic_challenge
             }
         }
 
-
         /// <summary>
         /// Initiates the server to establish the connection with the client
         /// </summary>
@@ -305,21 +304,29 @@ namespace arithmetic_challenge
 
         private void btnSend_Click(object sender, EventArgs e)
         {
+            
             // gets first number and converts it into integer
             String firstNo = tbxFirstNumber.Text;
-            int firstNumber = Int32.Parse(firstNo);
 
             // gets second number and converts it into integer
             String secondNo = tbxSecondNumber.Text;
-            int secondNumber = Int32.Parse(secondNo);
 
-            String mathOperator = cbxOperator.SelectedItem.ToString();
-            String strQuestion = firstNumber + " " + mathOperator + " " + secondNumber + " = ";
-            // validate fields
+            int firstNumber;
+            int secondNumber;
+            String mathOperator;
+            String strQuestion;
 
-            if (firstNo == null || secondNo == null)
+            try
             {
-                MessageBox.Show("Enter values to the first and second numbers of the operation");
+                firstNumber = Int32.Parse(firstNo);
+                secondNumber = Int32.Parse(secondNo);
+                mathOperator = cbxOperator.SelectedItem.ToString();
+                strQuestion = firstNumber + " " + mathOperator + " " + secondNumber + " = ";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Enter numbers to the operation");
+                return;
             }
 
             if (firstNumber != null && secondNumber != null)
@@ -372,15 +379,13 @@ namespace arithmetic_challenge
                 // Environment.NewLine;
                 tbxQuestionsAsked.Text += "Question: " + strQuestion + Environment.NewLine;
 
-                // clear text boxes
-                tbxFirstNumber.Text = "";
-                tbxSecondNumber.Text = "";
-
             }
 
             counter++;
 
             linkedList.readFromStart();
+
+            btnSend.Enabled = false;
 
         }
 
