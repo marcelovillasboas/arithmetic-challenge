@@ -434,7 +434,6 @@ namespace arithmetic_challenge
                 MessageBox.Show("Error sorting");
             }
 
-
         }
 
         private void btnBubbleSort_Click(object sender, EventArgs e)
