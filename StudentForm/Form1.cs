@@ -111,8 +111,7 @@ namespace StudentForm
             string mathOp = questionElements[1];
             int correctAnswer;
             int studentAnswer;
-            lblConnectionStatus.Text += Environment.NewLine + firstNumber + mathOp + secondNumber;
-
+            
             try
             {
                 // convert string into int

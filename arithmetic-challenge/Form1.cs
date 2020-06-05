@@ -287,17 +287,23 @@ namespace arithmetic_challenge
                 {
                     // display message with student's submition at the answer log
                     this.tbxQuestionsAsked.Text += "Student: " + text + Environment.NewLine;
+
+                    // re-enable send button
+                    btnSend.Enabled = true;
                 }
                 
                 // if text received is different than the answer displayed at the answer textbox
                 else
                 {
                     this.tbxIncorrect.Text += questions[counter - 1] + Environment.NewLine;
+                    
                     // display message with student's submition at the incorrect answer log
-                    // this.tbxIncorrect.Text += this.questions.ToString();
                     this.tbxIncorrect.Text += "Student: " + text + Environment.NewLine;
                     linkedList.insertToList(text);
                     listSize++;
+
+                    // re-enable send button
+                    btnSend.Enabled = true;
                 }
             }
         }
@@ -414,24 +420,39 @@ namespace arithmetic_challenge
         {
             tbxSortedQuestions.Clear();
 
-            QuickSort(questions, 0, questions.Count - 1);
-
-            foreach(Question question in questions)
+            try
             {
-                tbxSortedQuestions.Text += question.ToString() + Environment.NewLine;
+                QuickSort(questions, 0, questions.Count - 1);
+
+                foreach (Question question in questions)
+                {
+                    tbxSortedQuestions.Text += question.ToString() + Environment.NewLine;
+                }
             }
-            
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error sorting");
+            }
+
+
         }
 
         private void btnBubbleSort_Click(object sender, EventArgs e)
         {
             tbxSortedQuestions.Clear();
 
-            BubbleSort(0, questions);
-
-            foreach(Question question in questions)
+            try
             {
-                tbxSortedQuestions.Text += question.ToString() + Environment.NewLine;
+                BubbleSort(0, questions);
+
+                foreach (Question question in questions)
+                {
+                    tbxSortedQuestions.Text += question.ToString() + Environment.NewLine;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error sorting.");
             }
         }
 
@@ -439,11 +460,18 @@ namespace arithmetic_challenge
         {
             tbxSortedQuestions.Clear();
 
-            InsertionSort(questions);
-
-            foreach(Question question in questions)
+            try
             {
-                tbxSortedQuestions.Text += question.ToString() + Environment.NewLine;
+                InsertionSort(questions);
+
+                foreach (Question question in questions)
+                {
+                    tbxSortedQuestions.Text += question.ToString() + Environment.NewLine;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error sorting");
             }
         }
 
@@ -494,7 +522,7 @@ namespace arithmetic_challenge
         private void btnPreOrderDisplay_Click(object sender, EventArgs e)
         {
             tbxQuestionsAsked.Text = "";
-
+            btQuestions.TraversalString = "";
             btQuestions.PreOrder(btQuestions.GetRoot());
             string tString = btQuestions.TraversalString;
             tbxQuestionsAsked.Text += tString;
@@ -554,7 +582,7 @@ namespace arithmetic_challenge
         private void btnDisplayInOrder_Click(object sender, EventArgs e)
         {
             tbxQuestionsAsked.Text = "";
-
+            btQuestions.TraversalString = "";
             btQuestions.InOrder(btQuestions.GetRoot());
             string tString = btQuestions.TraversalString;
 
@@ -564,7 +592,7 @@ namespace arithmetic_challenge
         private void btnDisplayPostOrder_Click(object sender, EventArgs e)
         {
             tbxQuestionsAsked.Text = "";
-
+            btQuestions.TraversalString = "";
             btQuestions.PostOrder(btQuestions.GetRoot());
             string tString = btQuestions.TraversalString;
 
