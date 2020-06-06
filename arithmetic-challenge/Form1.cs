@@ -334,63 +334,60 @@ namespace arithmetic_challenge
                 MessageBox.Show("Enter numbers to the operation");
                 return;
             }
+                        
+            int result;
 
-            if (firstNumber != null && secondNumber != null)
+            if (mathOperator == "+")
             {
-                int result;
-
-                if (mathOperator == "+")
-                {
-                   result = firstNumber + secondNumber;
-                }
-                else if(mathOperator == "-")
-                {
-                    result = firstNumber - secondNumber;
-                }
-                else if (mathOperator == "x")
-                {
-                    result = firstNumber * secondNumber;
-                }
-                else if (mathOperator == "/")
-                {
-                    result = firstNumber / secondNumber;
-                }
-                else
-                {
-                    result = firstNumber + secondNumber;
-                }
-
-                tbxAnswer.Text = result.ToString();
-                int answer = Int32.Parse(result.ToString());
-
-                // creates new Question object
-                Question question = new Question(firstNumber, mathOperator, secondNumber, answer);
-
-                // adds to questions list
-                questions.Add(question);
-
-                // add to hashset
-                questionStrHashSet.Add(question.ToString());
-
-                // construct byte array to stream in write mode
-                byte[] bytesQuestion = Encoding.ASCII.GetBytes(question.QuestionToSend());
-                netStream.Write(bytesQuestion, 0, bytesQuestion.Length);
-
-                // insert questions into Binary Tree
-                btQuestions.Add(question.questionToSend(firstNumber, mathOperator, secondNumber, answer));
-
-                // change key
-                key++;
-
-                // Environment.NewLine;
-                tbxQuestionsAsked.Text += "Question: " + strQuestion + Environment.NewLine;
-
+                result = firstNumber + secondNumber;
             }
+            else if(mathOperator == "-")
+            {
+                result = firstNumber - secondNumber;
+            }
+            else if (mathOperator == "x")
+            {
+                result = firstNumber * secondNumber;
+            }
+            else if (mathOperator == "/")
+            {
+                result = firstNumber / secondNumber;
+            }
+            else
+            {
+                result = firstNumber + secondNumber;
+            }
+
+            tbxAnswer.Text = result.ToString();
+            int answer = Int32.Parse(result.ToString());
+
+            // creates new Question object
+            Question question = new Question(firstNumber, mathOperator, secondNumber, answer);
+
+            // adds to questions list
+            questions.Add(question);
+
+            // add to hashset
+            questionStrHashSet.Add(question.ToString());
+
+            // construct byte array to stream in write mode
+            byte[] bytesQuestion = Encoding.ASCII.GetBytes(question.QuestionToSend());
+            netStream.Write(bytesQuestion, 0, bytesQuestion.Length);
+
+            // insert questions into Binary Tree
+            btQuestions.Add(question.questionToSend(firstNumber, mathOperator, secondNumber, answer));
+
+            // change key
+            key++;
+
+            // Environment.NewLine;
+            tbxQuestionsAsked.Text += "Question: " + strQuestion + Environment.NewLine;
 
             counter++;
 
             linkedList.readFromStart();
 
+            // disable send button
             btnSend.Enabled = false;
 
         }
