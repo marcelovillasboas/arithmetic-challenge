@@ -327,7 +327,7 @@ namespace arithmetic_challenge
                 firstNumber = Int32.Parse(firstNo);
                 secondNumber = Int32.Parse(secondNo);
                 mathOperator = cbxOperator.SelectedItem.ToString();
-                strQuestion = firstNumber + " " + mathOperator + " " + secondNumber + " = ";
+                strQuestion = firstNumber + "\t" + mathOperator + "\t" + secondNumber + "\t = \t";
             }
             catch (Exception ex)
             {
@@ -380,8 +380,7 @@ namespace arithmetic_challenge
             // change key
             key++;
 
-            // Environment.NewLine;
-            tbxQuestionsAsked.Text += "Question: " + strQuestion + Environment.NewLine;
+            tbxSortedQuestions.Text += strQuestion + answer + Environment.NewLine;
 
             counter++;
 
