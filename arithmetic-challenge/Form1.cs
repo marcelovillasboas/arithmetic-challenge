@@ -286,7 +286,7 @@ namespace arithmetic_challenge
                 if(text == tbxAnswer.Text)
                 {
                     // display message with student's submition at the answer log
-                    this.tbxQuestionsAsked.Text += "Student: " + text + Environment.NewLine;
+                    // this.tbxQuestionsAsked.Text += "Student: " + text + Environment.NewLine;
 
                     // re-enable send button
                     btnSend.Enabled = true;
@@ -380,6 +380,7 @@ namespace arithmetic_challenge
             // change key
             key++;
 
+            // adds question string to the text box
             tbxSortedQuestions.Text += strQuestion + answer + Environment.NewLine;
 
             counter++;
@@ -473,46 +474,52 @@ namespace arithmetic_challenge
         private void btnFindIncorrect_Click(object sender, EventArgs e)
         {
             string questionToSearch = tbxFindIncorrect.Text;
-                        
-            if (questionToSearch == null)
+            
+            try
             {
-                MessageBox.Show("Enter a valid question to the search bar.");
-            }
-            else
-            {
-                string[] strElements = questionToSearch.Split(' ');
-                
-                if (strElements.Length == 5)
+                if (questionToSearch == null)
                 {
-                    try
-                    {
-                        int leftOp = Int32.Parse(strElements[0]);
-                        string mathOp = strElements[1];
-                        int rightOp = Int32.Parse(strElements[2]);
-                        int answer = Int32.Parse(strElements[4]);
-                        string questionToCompare = answer + "(" + leftOp + mathOp + rightOp + ")";
+                    MessageBox.Show("Enter a valid question to the search bar.");
+                }
+                else
+                {
+                    string[] strElements = questionToSearch.Split(' ');
 
-                        tbxIncorrect.Clear();
-                        tbxIncorrect.Text += leftOp + " " + mathOp + " " + rightOp + " " + " " + answer + Environment.NewLine;
-                        tbxIncorrect.Text += questionStrHashSet.ElementAt(0);
-
-                        if (questionStrHashSet.Contains(questionToCompare))
-                        {
-                            tbxIncorrect.Text = questionToSearch + " found.";
-                        }
-                        else
-                        {
-                            tbxIncorrect.Text = questionToSearch + " not found.";
-                        }
-                    }
-                    catch (Exception ex)
+                    if (strElements.Length == 5)
                     {
-                        tbxIncorrect.Text = "Error. Review question format";
+                        try
+                        {
+                            int leftOp = Int32.Parse(strElements[0]);
+                            string mathOp = strElements[1];
+                            int rightOp = Int32.Parse(strElements[2]);
+                            int answer = Int32.Parse(strElements[4]);
+                            string questionToCompare = answer + "(" + leftOp + mathOp + rightOp + ")";
+
+                            tbxIncorrect.Clear();
+                            tbxIncorrect.Text += leftOp + " " + mathOp + " " + rightOp + " " + " " + answer + Environment.NewLine;
+                            tbxIncorrect.Text += questionStrHashSet.ElementAt(0);
+
+                            if (questionStrHashSet.Contains(questionToCompare))
+                            {
+                                tbxIncorrect.Text = questionToSearch + " found.";
+                            }
+                            else
+                            {
+                                tbxIncorrect.Text = questionToSearch + " not found.";
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            tbxIncorrect.Text = "Error. Review question format";
+                        }
                     }
                 }
+            } catch (Exception exc)
+            {
+                MessageBox.Show("Error. review question format.");
             }
         }
-            
+              
 
         private void btnPreOrderDisplay_Click(object sender, EventArgs e)
         {
@@ -520,9 +527,7 @@ namespace arithmetic_challenge
             btQuestions.TraversalString = "";
             btQuestions.PreOrder(btQuestions.GetRoot());
             string tString = btQuestions.TraversalString;
-            tbxQuestionsAsked.Text += tString;
-            
-            
+            tbxQuestionsAsked.Text += tString;            
         }
 
         private void ServerForm_Load(object sender, EventArgs e)
@@ -533,46 +538,51 @@ namespace arithmetic_challenge
         private void btnFindAllQuestions_Click(object sender, EventArgs e)
         {
             string questionToSearch = tbxFindAllQuestions.Text.ToString();
-                        
-            if (tbxFindAllQuestions.Text == null)
-            {
-                tbxQuestionsAsked.Text = "Enter a valid question to the search bar";
-            }
-            else
-            {
-                string[] strElements = questionToSearch.Split(' ');
 
-                if (strElements.Length == 5)
+            try
+            {
+                if (tbxFindAllQuestions.Text == null)
                 {
-                    try
-                    {
-                        int leftOp = Int32.Parse(strElements[0]);
-                        string mathOp = strElements[1];
-                        int rightOp = Int32.Parse(strElements[2]);
-                        int answer = Int32.Parse(strElements[4]);
-                        tbxQuestionsAsked.Clear();
-                        tbxQuestionsAsked.Text += leftOp.ToString() + " " + mathOp + " " + rightOp.ToString() + " = " + answer.ToString() + Environment.NewLine;
-                        tbxQuestionsAsked.Text += questionStrHashSet.ElementAt(0);
-                        string questionToCompare = answer + "(" + leftOp + mathOp + rightOp + ")";
+                    MessageBox.Show("Enter a valid question to the search bar");
+                }
+                else
+                {
+                    string[] strElements = questionToSearch.Split(' ');
 
-                        if (questionStrHashSet.Contains(questionToCompare))
-                        {
-                            tbxQuestionsAsked.Text = questionToSearch + " found.";
-                        }
-                        else
-                        {
-                            tbxQuestionsAsked.Text = questionToSearch + " not found.";
-                        }
-                    }
-                    catch (Exception ex)
+                    if (strElements.Length == 5)
                     {
-                        tbxQuestionsAsked.Text = "Error. Review question format";
+                        try
+                        {
+                            int leftOp = Int32.Parse(strElements[0]);
+                            string mathOp = strElements[1];
+                            int rightOp = Int32.Parse(strElements[2]);
+                            int answer = Int32.Parse(strElements[4]);
+                            tbxQuestionsAsked.Clear();
+                            tbxQuestionsAsked.Text += leftOp.ToString() + " " + mathOp + " " + rightOp.ToString() + " = " + answer.ToString() + Environment.NewLine;
+                            tbxQuestionsAsked.Text += questionStrHashSet.ElementAt(0);
+                            string questionToCompare = leftOp + "\t" + mathOp + "\t" + rightOp + "\t" + answer;
+
+                            if (questionStrHashSet.Contains(questionToCompare))
+                            {
+                                MessageBox.Show(questionToSearch + " found.");
+                            }
+                            else
+                            {
+                                MessageBox.Show(questionToSearch + " not found.");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            tbxQuestionsAsked.Text = "Error. Review question format";
+                        }
                     }
                 }
-
-            }
+            } 
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error. review question format.");
+            }       
         }
-            
 
         private void btnDisplayInOrder_Click(object sender, EventArgs e)
         {

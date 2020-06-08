@@ -121,9 +121,9 @@
             this.lblQuestionsAsked.AutoSize = true;
             this.lblQuestionsAsked.Location = new System.Drawing.Point(310, 26);
             this.lblQuestionsAsked.Name = "lblQuestionsAsked";
-            this.lblQuestionsAsked.Size = new System.Drawing.Size(89, 13);
+            this.lblQuestionsAsked.Size = new System.Drawing.Size(88, 13);
             this.lblQuestionsAsked.TabIndex = 8;
-            this.lblQuestionsAsked.Text = "Sorted questions:";
+            this.lblQuestionsAsked.Text = "Log of questions:";
             // 
             // lblWrongAnswers
             // 
@@ -171,9 +171,9 @@
             this.lblLog.AutoSize = true;
             this.lblLog.Location = new System.Drawing.Point(310, 204);
             this.lblLog.Name = "lblLog";
-            this.lblLog.Size = new System.Drawing.Size(143, 13);
+            this.lblLog.Size = new System.Drawing.Size(64, 13);
             this.lblLog.TabIndex = 13;
-            this.lblLog.Text = "Log of questions (binary tree)";
+            this.lblLog.Text = "Binary Tree:";
             // 
             // tbxSortedQuestions
             // 
@@ -223,7 +223,7 @@
             // 
             // tbxFindIncorrect
             // 
-            this.tbxFindIncorrect.Location = new System.Drawing.Point(231, 241);
+            this.tbxFindIncorrect.Location = new System.Drawing.Point(175, 241);
             this.tbxFindIncorrect.Name = "tbxFindIncorrect";
             this.tbxFindIncorrect.Size = new System.Drawing.Size(55, 20);
             this.tbxFindIncorrect.TabIndex = 21;
@@ -231,7 +231,7 @@
             // 
             // btnFindIncorrect
             // 
-            this.btnFindIncorrect.Location = new System.Drawing.Point(175, 239);
+            this.btnFindIncorrect.Location = new System.Drawing.Point(236, 241);
             this.btnFindIncorrect.Name = "btnFindIncorrect";
             this.btnFindIncorrect.Size = new System.Drawing.Size(50, 23);
             this.btnFindIncorrect.TabIndex = 22;
@@ -298,7 +298,7 @@
             // 
             // btnFindAllQuestions
             // 
-            this.btnFindAllQuestions.Location = new System.Drawing.Point(459, 200);
+            this.btnFindAllQuestions.Location = new System.Drawing.Point(432, 21);
             this.btnFindAllQuestions.Name = "btnFindAllQuestions";
             this.btnFindAllQuestions.Size = new System.Drawing.Size(38, 23);
             this.btnFindAllQuestions.TabIndex = 29;
@@ -308,9 +308,9 @@
             // 
             // tbxFindAllQuestions
             // 
-            this.tbxFindAllQuestions.Location = new System.Drawing.Point(500, 202);
+            this.tbxFindAllQuestions.Location = new System.Drawing.Point(476, 23);
             this.tbxFindAllQuestions.Name = "tbxFindAllQuestions";
-            this.tbxFindAllQuestions.Size = new System.Drawing.Size(50, 20);
+            this.tbxFindAllQuestions.Size = new System.Drawing.Size(75, 20);
             this.tbxFindAllQuestions.TabIndex = 30;
             this.tbxFindAllQuestions.Text = "a + b = c";
             // 

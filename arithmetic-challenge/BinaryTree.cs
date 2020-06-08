@@ -167,7 +167,7 @@ namespace arithmetic_challenge
             if(root != null)
             {
                 InOrder(root.leftChild);
-                TraversalString += root.data.ToString() + " ";       
+                TraversalString += root.data.ToString() + ", ";       
                 InOrder(root.rightChild);
             }
 
