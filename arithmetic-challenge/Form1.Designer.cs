@@ -185,7 +185,7 @@
             // 
             // btnQuickSort
             // 
-            this.btnQuickSort.Location = new System.Drawing.Point(313, 161);
+            this.btnQuickSort.Location = new System.Drawing.Point(394, 161);
             this.btnQuickSort.Name = "btnQuickSort";
             this.btnQuickSort.Size = new System.Drawing.Size(75, 23);
             this.btnQuickSort.TabIndex = 15;
@@ -203,7 +203,7 @@
             // 
             // btnBubbleSort
             // 
-            this.btnBubbleSort.Location = new System.Drawing.Point(394, 161);
+            this.btnBubbleSort.Location = new System.Drawing.Point(313, 161);
             this.btnBubbleSort.Name = "btnBubbleSort";
             this.btnBubbleSort.Size = new System.Drawing.Size(75, 23);
             this.btnBubbleSort.TabIndex = 19;

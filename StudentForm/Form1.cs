@@ -125,9 +125,6 @@ namespace StudentForm
                     byte[] bytesToSend = Encoding.ASCII.GetBytes(answer);
                     netStream.Write(bytesToSend, 0, bytesToSend.Length);
 
-                    tbxAnswer.Text = "";
-                    tbxQuestion.Text = "";
-
                     lblConnectionStatus.Text = "Answer sent!" + Environment.NewLine;
                 }
                 else
@@ -165,7 +162,7 @@ namespace StudentForm
                             MessageBox.Show("Incorrect answer");
                         }
                     }
-                    else if (mathOp == "*")
+                    else if (mathOp == "x")
                     {
                         correctAnswer = firstNo * secondNo;
                         if (studentAnswer == correctAnswer)
@@ -189,7 +186,10 @@ namespace StudentForm
                             MessageBox.Show("Incorrect answer");
                         }
                     }
-                                        
+
+                    tbxAnswer.Text = "";
+                    tbxQuestion.Text = "";
+
                 }
                 catch(Exception exc)
                 {

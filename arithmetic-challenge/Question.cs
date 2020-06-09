@@ -29,7 +29,7 @@ namespace arithmetic_challenge
 
         public override string ToString()
         {
-            return answer + "(" + leftOp + mathOp + rightOp + ")";
+            return leftOp + "\t" + mathOp + "\t" + rightOp + "\t = \t" + answer;
         }
 
         public string QuestionToSend()

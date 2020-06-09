@@ -285,20 +285,20 @@ namespace arithmetic_challenge
                 // if text received is equal the answer displayed at the answer textbox
                 if(text == tbxAnswer.Text)
                 {
-                    // display message with student's submition at the answer log
-                    // this.tbxQuestionsAsked.Text += "Student: " + text + Environment.NewLine;
-
                     // re-enable send button
                     btnSend.Enabled = true;
                 }
-                
                 // if text received is different than the answer displayed at the answer textbox
                 else
                 {
-                    this.tbxIncorrect.Text += questions[counter - 1] + Environment.NewLine;
+                    // add question to questionStrHashset
+                    questionStrHashSet.Add(questions[counter - 1].ToString());
+
+                    // display question sent to student at the incorrect answers log
+                    this.tbxIncorrect.Text += questions[counter - 1].ToString() + Environment.NewLine;
                     
                     // display message with student's submition at the incorrect answer log
-                    this.tbxIncorrect.Text += "Student: " + text + Environment.NewLine;
+                    this.tbxIncorrect.Text += "Student's answer: \t" + text + Environment.NewLine;
                     linkedList.insertToList(text);
                     listSize++;
 
@@ -366,9 +366,6 @@ namespace arithmetic_challenge
 
             // adds to questions list
             questions.Add(question);
-
-            // add to hashset
-            questionStrHashSet.Add(question.ToString());
 
             // construct byte array to stream in write mode
             byte[] bytesQuestion = Encoding.ASCII.GetBytes(question.QuestionToSend());
@@ -493,25 +490,25 @@ namespace arithmetic_challenge
                             string mathOp = strElements[1];
                             int rightOp = Int32.Parse(strElements[2]);
                             int answer = Int32.Parse(strElements[4]);
-                            string questionToCompare = answer + "(" + leftOp + mathOp + rightOp + ")";
-
-                            tbxIncorrect.Clear();
-                            tbxIncorrect.Text += leftOp + " " + mathOp + " " + rightOp + " " + " " + answer + Environment.NewLine;
-                            tbxIncorrect.Text += questionStrHashSet.ElementAt(0);
+                            string questionToCompare = leftOp + "\t" + mathOp + "\t" + rightOp + "\t = \t" + answer; 
 
                             if (questionStrHashSet.Contains(questionToCompare))
                             {
-                                tbxIncorrect.Text = questionToSearch + " found.";
+                                MessageBox.Show(questionToSearch + " found.");
                             }
                             else
                             {
-                                tbxIncorrect.Text = questionToSearch + " not found.";
+                                MessageBox.Show(questionToSearch + " not found.");
                             }
                         }
                         catch (Exception ex)
                         {
                             tbxIncorrect.Text = "Error. Review question format";
                         }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Enter a valid question to the search bar.");
                     }
                 }
             } catch (Exception exc)
@@ -553,14 +550,12 @@ namespace arithmetic_challenge
                     {
                         try
                         {
+                            // set up new string to be displayed
                             int leftOp = Int32.Parse(strElements[0]);
                             string mathOp = strElements[1];
                             int rightOp = Int32.Parse(strElements[2]);
                             int answer = Int32.Parse(strElements[4]);
-                            tbxQuestionsAsked.Clear();
-                            tbxQuestionsAsked.Text += leftOp.ToString() + " " + mathOp + " " + rightOp.ToString() + " = " + answer.ToString() + Environment.NewLine;
-                            tbxQuestionsAsked.Text += questionStrHashSet.ElementAt(0);
-                            string questionToCompare = leftOp + "\t" + mathOp + "\t" + rightOp + "\t" + answer;
+                            string questionToCompare = leftOp + "\t" + mathOp + "\t" + rightOp + "\t = \t" + answer;
 
                             if (questionStrHashSet.Contains(questionToCompare))
                             {
@@ -575,6 +570,10 @@ namespace arithmetic_challenge
                         {
                             tbxQuestionsAsked.Text = "Error. Review question format";
                         }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Enter a valid question to the search bar");
                     }
                 }
             } 
