@@ -27,6 +27,11 @@ namespace arithmetic_challenge
             return this.LeftOp + " " + this.MathOp + " " + this.RightOp + " = " + this.Answer;
         }
 
+        public string stringToSave()
+        {
+            return leftOp + " " + mathOp + " " + rightOp + " " + answer + ", ";
+        }
+
         public override string ToString()
         {
             return leftOp + "\t" + mathOp + "\t" + rightOp + "\t = \t" + answer;

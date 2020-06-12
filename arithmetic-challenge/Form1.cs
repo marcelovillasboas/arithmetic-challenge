@@ -36,7 +36,6 @@ namespace arithmetic_challenge
         public bool exitStatus = false;
         public const int BYTE_SYZE = 1024;
         public const int PORT_NUMBER = 8888;
-        string path = "C:\\Users\\marce\\documents\\Questions.txt";
 
         // declare Binary Tree
         BinaryTree<string> btQuestions = new BinaryTree<string>();
@@ -193,6 +192,7 @@ namespace arithmetic_challenge
         /// <param name="questions">
         /// list of questions sent to the student through the instructor form. This is the object supposed to be sorted
         /// </param>
+        
         static void InsertionSort(List<Question> questions)
         {
             int swapCounter = 0;
@@ -210,28 +210,9 @@ namespace arithmetic_challenge
                         questions[j] = questions[j - 1];
                         questions[j - 1] = temp;
                         swapCounter++;
-
                     }
                 }
-
             }
-            
-            
-            /*int n = questions.Count;
-
-            for(int i = 0; i < n; i++)
-            {
-                int key = questions[i].Answer;
-                int j = i - 1;
-
-                // move elements that are greater than the key to one position ahead of their current position
-                while (j >= 0 && questions[j].Answer > key)
-                {
-                    questions[j + 1] = questions[j];
-                    j--;
-                }
-                questions[j + 1].Answer = key;
-            }*/
         }
 
         /// <summary>
@@ -640,24 +621,75 @@ namespace arithmetic_challenge
             {
                 btQuestions.PreOrder(btQuestions.GetRoot());
 
-                StreamWriter writeToFile = new StreamWriter(path);
-
-                foreach (Question q in questions)
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                if(saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    writeToFile.WriteLine(q.QuestionToSend());
-                }
+                    StreamWriter writeToFile = new StreamWriter(saveFileDialog.FileName);
+                    foreach (Question q in questions)
+                    {
+                        writeToFile.WriteLine(q.stringToSave());
+                    }
 
-                writeToFile.Close();
+                    writeToFile.Close();
+                }                
 
                 MessageBox.Show("Data successfully saved to file.");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error saving to text file");
+                MessageBox.Show("Error saving to text file. Error: \t" + ex);
             }
            
                 
             
+        }
+
+        private void btnSaveInOrder_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                btQuestions.InOrder(btQuestions.GetRoot());
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+                if(saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    StreamWriter writeToFile = new StreamWriter(saveFileDialog.FileName);
+                    foreach(Question q in questions)
+                    {
+                        writeToFile.WriteLine(q.stringToSave());
+                    }
+                    writeToFile.Close();
+                    MessageBox.Show("Data successfully saved to file.");
+                }
+            } 
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saving data to file. Error: \t" + ex);
+            }
+        }
+
+        private void btnSavePostOrder_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                btQuestions.PostOrder(btQuestions.GetRoot());
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+                if(saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    StreamWriter writeToFile = new StreamWriter(saveFileDialog.FileName);
+                    foreach (Question q in questions)
+                    {
+                        writeToFile.WriteLine(q.stringToSave());
+                    }
+                    writeToFile.Close();
+                    MessageBox.Show("Data successfully saved to file.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saving data to file. Error: \t" + ex);
+            }
         }
     }
 }
