@@ -29,7 +29,7 @@ namespace arithmetic_challenge
 
         public string stringToSave()
         {
-            return leftOp + " " + mathOp + " " + rightOp + " " + answer + ", ";
+            return leftOp + " " + mathOp + " " + rightOp + " = " + answer + ", ";
         }
 
         public override string ToString()
