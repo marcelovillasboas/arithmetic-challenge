@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -35,6 +36,7 @@ namespace arithmetic_challenge
         public bool exitStatus = false;
         public const int BYTE_SYZE = 1024;
         public const int PORT_NUMBER = 8888;
+        string path = "C:\\Users\\marce\\documents\\Questions.txt";
 
         // declare Binary Tree
         BinaryTree<string> btQuestions = new BinaryTree<string>();
@@ -79,6 +81,8 @@ namespace arithmetic_challenge
             // run server
             StartServer();
         }
+
+        
 
         /// <summary>
         /// method representing the quick sort algorithm, along Partition and Swap
@@ -191,7 +195,29 @@ namespace arithmetic_challenge
         /// </param>
         static void InsertionSort(List<Question> questions)
         {
-            int n = questions.Count;
+            int swapCounter = 0;
+           
+            for(int i = 0; i < questions.Count; i++)
+            {
+                for (int j = i; j > 0; j--)
+                {
+                    int keyI = questions[j].Answer;
+                    int keyJ = questions[j - 1].Answer;
+                    
+                    if(keyI < keyJ)
+                    {
+                        Question temp = questions[j];
+                        questions[j] = questions[j - 1];
+                        questions[j - 1] = temp;
+                        swapCounter++;
+
+                    }
+                }
+
+            }
+            
+            
+            /*int n = questions.Count;
 
             for(int i = 0; i < n; i++)
             {
@@ -205,7 +231,7 @@ namespace arithmetic_challenge
                     j--;
                 }
                 questions[j + 1].Answer = key;
-            }
+            }*/
         }
 
         /// <summary>
@@ -606,6 +632,32 @@ namespace arithmetic_challenge
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnSavePreOrder_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                btQuestions.PreOrder(btQuestions.GetRoot());
+
+                StreamWriter writeToFile = new StreamWriter(path);
+
+                foreach (Question q in questions)
+                {
+                    writeToFile.WriteLine(q.QuestionToSend());
+                }
+
+                writeToFile.Close();
+
+                MessageBox.Show("Data successfully saved to file.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saving to text file");
+            }
+           
+                
+            
         }
     }
 }

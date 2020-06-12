@@ -57,6 +57,9 @@
             this.btnFindAllQuestions = new System.Windows.Forms.Button();
             this.tbxFindAllQuestions = new System.Windows.Forms.TextBox();
             this.btnExit = new System.Windows.Forms.Button();
+            this.btnSavePreOrder = new System.Windows.Forms.Button();
+            this.btnSaveInOrder = new System.Windows.Forms.Button();
+            this.btnSavePostOrder = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblFirstNumber
@@ -316,7 +319,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(497, 361);
+            this.btnExit.Location = new System.Drawing.Point(12, 359);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 31;
@@ -324,11 +327,42 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // btnSavePreOrder
+            // 
+            this.btnSavePreOrder.Location = new System.Drawing.Point(310, 359);
+            this.btnSavePreOrder.Name = "btnSavePreOrder";
+            this.btnSavePreOrder.Size = new System.Drawing.Size(49, 23);
+            this.btnSavePreOrder.TabIndex = 32;
+            this.btnSavePreOrder.Text = "Save";
+            this.btnSavePreOrder.UseVisualStyleBackColor = true;
+            this.btnSavePreOrder.Click += new System.EventHandler(this.btnSavePreOrder_Click);
+            // 
+            // btnSaveInOrder
+            // 
+            this.btnSaveInOrder.Location = new System.Drawing.Point(404, 359);
+            this.btnSaveInOrder.Name = "btnSaveInOrder";
+            this.btnSaveInOrder.Size = new System.Drawing.Size(49, 23);
+            this.btnSaveInOrder.TabIndex = 33;
+            this.btnSaveInOrder.Text = "Save";
+            this.btnSaveInOrder.UseVisualStyleBackColor = true;
+            // 
+            // btnSavePostOrder
+            // 
+            this.btnSavePostOrder.Location = new System.Drawing.Point(500, 359);
+            this.btnSavePostOrder.Name = "btnSavePostOrder";
+            this.btnSavePostOrder.Size = new System.Drawing.Size(49, 23);
+            this.btnSavePostOrder.TabIndex = 34;
+            this.btnSavePostOrder.Text = "Save";
+            this.btnSavePostOrder.UseVisualStyleBackColor = true;
+            // 
             // ServerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 394);
+            this.Controls.Add(this.btnSavePostOrder);
+            this.Controls.Add(this.btnSaveInOrder);
+            this.Controls.Add(this.btnSavePreOrder);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.tbxFindAllQuestions);
             this.Controls.Add(this.btnFindAllQuestions);
@@ -398,6 +432,9 @@
         private System.Windows.Forms.Button btnFindAllQuestions;
         private System.Windows.Forms.TextBox tbxFindAllQuestions;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnSavePreOrder;
+        private System.Windows.Forms.Button btnSaveInOrder;
+        private System.Windows.Forms.Button btnSavePostOrder;
     }
 }
 
